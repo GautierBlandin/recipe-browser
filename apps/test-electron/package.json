@@ -1,0 +1,10 @@
+{
+  "name": "@recipe-browser/test-electron",
+  "version": "0.0.1",
+  "main": "main.ts",
+  "private": true,
+  "nx": {
+    "targets": {
+    }
+  }
+}
