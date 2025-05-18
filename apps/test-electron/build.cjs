@@ -2,8 +2,11 @@ const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
 
+// Get the project root directory (where the build script is located)
+const projectRoot = __dirname;
+
 // Ensure build directory exists
-const buildDir = path.resolve(__dirname, 'build');
+const buildDir = path.resolve(projectRoot, 'build');
 if (!fs.existsSync(buildDir)) {
   fs.mkdirSync(buildDir, { recursive: true });
 }
@@ -11,10 +14,10 @@ if (!fs.existsSync(buildDir)) {
 // Main build process
 (async () => {
   try {
-    // Build TypeScript files
+    // Build TypeScript files with absolute paths
     await esbuild.build({
-      entryPoints: ['src/main.ts'],
-      outdir: 'build',
+      entryPoints: [path.resolve(projectRoot, 'src/main.ts')],
+      outdir: buildDir,
       bundle: true,
       platform: 'node',
       format: 'cjs',
@@ -23,8 +26,9 @@ if (!fs.existsSync(buildDir)) {
       outExtension: { '.js': '.js' },
     });
 
-    // Read the original package.json
-    const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+    // Read the original package.json with absolute path
+    const packageJsonPath = path.resolve(projectRoot, 'package.json');
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
     // Modify the entrypoint to point to the correct location
     packageJson.main = 'main.js'; // This will be the output file in the build directory
