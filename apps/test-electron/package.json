@@ -11,14 +11,18 @@
         "options": {
           "cwd": "{projectRoot}"
         },
-        "dependsOn": ["^build"]
+        "dependsOn": [
+          "^build"
+        ]
       },
       "serve": {
         "command": "npx electron ./build",
         "options": {
           "cwd": "{projectRoot}"
         },
-        "dependsOn": ["build"]
+        "dependsOn": [
+          "build"
+        ]
       }
     }
   }
