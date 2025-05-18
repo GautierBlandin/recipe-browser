@@ -16,7 +16,7 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
-/.obsidian
+**/.obsidian
 
 # IDE - VSCode
 .vscode/*
