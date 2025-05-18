@@ -24,6 +24,7 @@ if (!fs.existsSync(buildDir)) {
       sourcemap: true,
       loader: { '.ts': 'ts' },
       outExtension: { '.js': '.js' },
+      external: ['electron'],
     });
 
     // Copy index.html to build directory
