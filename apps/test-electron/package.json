@@ -4,7 +4,21 @@
   "main": "main.ts",
   "private": true,
   "nx": {
+    "root": "apps/test-electron",
     "targets": {
+      "build": {
+        "command": "node ./build.cjs",
+        "options": {
+          "cwd": "{projectRoot}"
+        }
+      },
+      "serve": {
+        "command": "npx electron ./build",
+        "options": {
+          "cwd": "{projectRoot}"
+        },
+        "dependsOn": ["^build"]
+      }
     }
   }
 }
