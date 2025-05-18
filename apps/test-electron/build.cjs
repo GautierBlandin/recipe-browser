@@ -26,6 +26,12 @@ if (!fs.existsSync(buildDir)) {
       outExtension: { '.js': '.js' },
     });
 
+    // Copy index.html to build directory
+    const sourceHtmlPath = path.resolve(projectRoot, 'src/index.html');
+    const destHtmlPath = path.resolve(buildDir, 'index.html');
+    fs.copyFileSync(sourceHtmlPath, destHtmlPath);
+    console.log('Copied index.html to build directory');
+
     // Read the original package.json with absolute path
     const packageJsonPath = path.resolve(projectRoot, 'package.json');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
