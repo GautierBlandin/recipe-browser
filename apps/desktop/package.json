@@ -1,5 +1,8 @@
 {
   "name": "@recipe-browser/desktop",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "react-router-dom": "^7.6.0"
+  }
 }
