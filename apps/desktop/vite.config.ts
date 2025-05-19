@@ -26,6 +26,7 @@ export default defineConfig(() => ({
       transformMixedEsModules: true,
     },
   },
+  base: './',
   test: {
     watch: false,
     globals: true,

@@ -1,0 +1,9 @@
+{
+  "name": "@recipe-browser/electron",
+  "version": "1.0.0",
+  "description": "Electron app for Recipe Browser",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^36.2.1"
+  }
+}
