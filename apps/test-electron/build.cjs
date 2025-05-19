@@ -32,6 +32,18 @@ if (!fs.existsSync(buildDir)) {
     const destHtmlPath = path.resolve(buildDir, 'index.html');
     fs.copyFileSync(sourceHtmlPath, destHtmlPath);
     console.log('Copied index.html to build directory');
+    
+    // Copy renderer.js to build directory
+    const sourceRendererPath = path.resolve(projectRoot, 'src/renderer.js');
+    const destRendererPath = path.resolve(buildDir, 'renderer.js');
+    fs.copyFileSync(sourceRendererPath, destRendererPath);
+    console.log('Copied renderer.js to build directory');
+    
+    // Copy preload.js to build directory
+    const sourcePreloadPath = path.resolve(projectRoot, 'src/preload.js');
+    const destPreloadPath = path.resolve(buildDir, 'preload.js');
+    fs.copyFileSync(sourcePreloadPath, destPreloadPath);
+    console.log('Copied preload.js to build directory');
 
     // Read the original package.json with absolute path
     const packageJsonPath = path.resolve(projectRoot, 'package.json');
