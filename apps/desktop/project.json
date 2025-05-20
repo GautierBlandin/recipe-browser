@@ -10,7 +10,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "apps/electron/output"
+        "outputPath": "apps/desktop/dist",
+        "generatePackageJson": false
       },
       "configurations": {
         "development": {
