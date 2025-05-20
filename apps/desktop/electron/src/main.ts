@@ -9,8 +9,8 @@ function createWindow(): void {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: false
-    }
+      nodeIntegration: false,
+    },
   });
 
   // Load the index.html from the React build
@@ -18,24 +18,31 @@ function createWindow(): void {
   console.log('Attempting to load:', indexPath);
 
   // Set the base directory for loading resources
-  mainWindow.webContents.session.setPreloads([path.join(__dirname, 'preload.js')]);
+  mainWindow.webContents.session.setPreloads([
+    path.join(__dirname, 'preload.js'),
+  ]);
 
   // Use loadFile which handles relative paths better in Electron
-  mainWindow.loadFile(indexPath)
+  mainWindow
+    .loadFile(indexPath)
     .then(() => console.log('Successfully started loading the file'))
     .catch((err: Error) => {
       console.error('Failed to load index.html:', err);
     });
 
   // Set proper content security policy to allow loading local resources
-  mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => {
-    callback({
-      responseHeaders: {
-        ...details.responseHeaders,
-        'Content-Security-Policy': ["default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"]
-      }
-    });
-  });
+  mainWindow.webContents.session.webRequest.onHeadersReceived(
+    (details, callback) => {
+      callback({
+        responseHeaders: {
+          ...details.responseHeaders,
+          'Content-Security-Policy': [
+            "default-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';",
+          ],
+        },
+      });
+    }
+  );
 
   // Open DevTools to help diagnose issues
   mainWindow.webContents.openDevTools();

@@ -3,7 +3,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: '../../node_modules/.vite/apps/electron',
+  cacheDir: '../../../node_modules/.vite/apps/electron',
 
   build: {
     emptyOutDir: true,
@@ -12,10 +12,10 @@ export default defineConfig({
     lib: {
       entry: {
         main: resolve(__dirname, 'src/main.ts'),
-        preload: resolve(__dirname, 'src/preload.ts')
+        preload: resolve(__dirname, 'src/preload.ts'),
       },
       formats: ['cjs'],
-      fileName: (format, entryName) => `${entryName}.js`
+      fileName: (format, entryName) => `${entryName}.js`,
     },
     rollupOptions: {
       external: [
@@ -26,14 +26,14 @@ export default defineConfig({
         'http',
         'https',
         'os',
-        'crypto'
+        'crypto',
       ],
       output: {
-        entryFileNames: '[name].js'
-      }
+        entryFileNames: '[name].js',
+      },
     },
     target: 'node22',
     minify: false,
-    sourcemap: true
-  }
+    sourcemap: true,
+  },
 });

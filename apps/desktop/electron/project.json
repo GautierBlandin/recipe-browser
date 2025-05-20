@@ -1,8 +1,8 @@
 {
   "name": "electron",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "root": "apps/electron",
-  "projectRoot": "apps/electron",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectRoot": "apps/desktop/electron",
+  "tags": [],
   "targets": {
     "build-electron": {
       "executor": "nx:run-commands",
@@ -23,10 +23,7 @@
         "cwd": "{projectRoot}",
         "parallel": false
       },
-      "dependsOn": [
-        "desktop:build",
-        "build-electron"
-      ]
+      "dependsOn": ["desktop:build", "build-electron"]
     },
     "serve": {
       "executor": "nx:run-commands",
@@ -34,34 +31,24 @@
         "command": "npx electron ./build",
         "cwd": "{projectRoot}"
       },
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "npx vite build --watch",
-          "node build-scripts/watch.js"
-        ],
+        "commands": ["npx vite build --watch", "node build-scripts/watch.js"],
         "cwd": "{projectRoot}",
         "parallel": true
       },
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     },
     "package": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx electron-builder --dir",
-        "cwd": "apps/electron"
+        "cwd": "{projectRoot}"
       },
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     }
-  },
-  "tags": []
+  }
 }

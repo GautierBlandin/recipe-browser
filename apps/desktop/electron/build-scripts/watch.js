@@ -22,7 +22,7 @@ function startElectron() {
 
   console.log('Starting Electron app...');
   electronProcess = spawn(electron, [path.join(__dirname, '../build')], {
-    stdio: 'inherit'
+    stdio: 'inherit',
   });
 
   electronProcess.on('close', () => {
@@ -39,7 +39,7 @@ if (fs.existsSync(path.join(webappDir, 'index.html'))) {
   startElectron();
 } else {
   console.log('Waiting for React build to complete...');
-  
+
   // Poll for index.html
   const checkBuild = setInterval(() => {
     if (fs.existsSync(path.join(webappDir, 'index.html'))) {
@@ -51,7 +51,11 @@ if (fs.existsSync(path.join(webappDir, 'index.html'))) {
 
 // Watch for changes in webapp directory
 fs.watch(webappDir, { recursive: true }, (eventType, filename) => {
-  if (filename && filename.endsWith('.js') || filename.endsWith('.html') || filename.endsWith('.css')) {
+  if (
+    (filename && filename.endsWith('.js')) ||
+    filename.endsWith('.html') ||
+    filename.endsWith('.css')
+  ) {
     console.log(`File ${filename} changed, restarting app...`);
     startElectron();
   }
@@ -60,10 +64,10 @@ fs.watch(webappDir, { recursive: true }, (eventType, filename) => {
 // Also restart when Electron files change
 const electronFiles = [
   path.join(__dirname, '../main.js'),
-  path.join(__dirname, '../preload.js')
+  path.join(__dirname, '../preload.js'),
 ];
 
-electronFiles.forEach(file => {
+electronFiles.forEach((file) => {
   fs.watchFile(file, (curr, prev) => {
     if (curr.mtime !== prev.mtime) {
       console.log(`${file} changed, restarting Electron...`);
