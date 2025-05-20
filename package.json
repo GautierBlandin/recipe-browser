@@ -2,11 +2,6 @@
   "name": "@recipe-browser/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "electron": "nx serve electron",
-    "electron:dev": "nx build desktop --watch & nx dev electron",
-    "electron:build": "nx build electron"
-  },
   "private": true,
   "dependencies": {
     "@react-router/node": "^7.2.0",
