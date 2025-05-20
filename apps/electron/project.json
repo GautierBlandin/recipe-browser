@@ -8,9 +8,10 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "mkdir -p apps/electron/output",
-          "cp -R apps/desktop/dist/* apps/electron/output/"
+          "mkdir -p ./output",
+          "cp -R ../desktop/dist/* ./output/"
         ],
+        "cwd": "{projectRoot}",
         "parallel": false
       },
       "dependsOn": [
@@ -20,7 +21,8 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd apps/electron && electron ."
+        "command": "npx electron .",
+        "cwd": "{projectRoot}"
       },
       "dependsOn": [
         "build"
@@ -29,7 +31,8 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd apps/electron && node build-scripts/watch.js"
+        "command": "node build-scripts/watch.js",
+        "cwd": "{projectRoot}"
       },
       "dependsOn": [
         "build"
@@ -38,7 +41,7 @@
     "package": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "electron-builder --dir",
+        "command": "npx electron-builder --dir",
         "cwd": "apps/electron"
       },
       "dependsOn": [

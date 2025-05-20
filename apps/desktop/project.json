@@ -4,13 +4,14 @@
   "root": "apps/desktop",
   "sourceRoot": "apps/desktop/src",
   "projectType": "application",
+  "projectRoot": "apps/desktop",
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "apps/desktop/dist",
+        "outputPath": "{projectRoot}/dist",
         "generatePackageJson": false
       },
       "configurations": {

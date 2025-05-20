@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Electron app for Recipe Browser",
   "main": "main.js",
-  "dependencies": {
-    "electron": "^36.2.1"
+  "author": "Gautier Blandin",
+  "devDependencies": {
+    "electron": "36.2.1"
   }
 }
