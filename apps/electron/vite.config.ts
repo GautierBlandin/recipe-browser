@@ -4,7 +4,7 @@ import { resolve } from 'path';
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/electron',
-  
+
   build: {
     emptyOutDir: true,
     outDir: 'dist',
@@ -34,6 +34,6 @@ export default defineConfig({
     },
     target: 'node22',
     minify: false,
-    sourcemap: 'inline'
+    sourcemap: true
   }
 });
