@@ -1,8 +1,5 @@
 {
   "name": "desktop",
   "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "react-router-dom": "^7.6.0"
-  }
+  "private": true
 }
