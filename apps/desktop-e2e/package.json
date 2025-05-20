@@ -4,7 +4,7 @@
   "private": true,
   "nx": {
     "implicitDependencies": [
-      "@recipe-browser/desktop"
+      "desktop"
     ]
   }
 }

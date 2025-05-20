@@ -1,6 +1,5 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const { logDirectoryContents } = require('./debug-helper');
 
 function createWindow() {
   // Create the browser window
@@ -41,23 +40,9 @@ function createWindow() {
   // Open DevTools to help diagnose issues
   mainWindow.webContents.openDevTools();
 
-  // Log directory contents to help debug resource loading issues
-  logDirectoryContents(__dirname);
-  logDirectoryContents(path.join(__dirname, 'output'));
-  logDirectoryContents(path.join(__dirname, 'output/assets'));
-
   // Log when page finishes loading or fails
   mainWindow.webContents.on('did-finish-load', () => {
     console.log('Page loaded successfully');
-  });
-
-  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription) => {
-    console.error('Failed to load:', errorCode, errorDescription);
-  });
-
-  // Log any console messages from the renderer process
-  mainWindow.webContents.on('console-message', (event, level, message, line, sourceId) => {
-    console.log(`Renderer Console [${level}]: ${message}`);
   });
 }
 
@@ -73,5 +58,5 @@ app.whenReady().then(() => {
 
 // Quit when all windows are closed, except on macOS
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit();
+  app.quit();
 });
