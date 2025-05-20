@@ -21,7 +21,7 @@ function startElectron() {
   }
 
   console.log('Starting Electron app...');
-  electronProcess = spawn(electron, [path.join(__dirname, '..')], {
+  electronProcess = spawn(electron, [path.join(__dirname, '../build')], {
     stdio: 'inherit'
   });
 
@@ -30,27 +30,27 @@ function startElectron() {
   });
 }
 
-// Watch for changes in the output directory
-const outputDir = path.join(__dirname, '../output');
+// Watch for changes in the webapp directory
+const webappDir = path.join(__dirname, '../build/webapp');
 
 // Initial start
 console.log('Watching for changes in React app...');
-if (fs.existsSync(path.join(outputDir, 'index.html'))) {
+if (fs.existsSync(path.join(webappDir, 'index.html'))) {
   startElectron();
 } else {
   console.log('Waiting for React build to complete...');
   
   // Poll for index.html
   const checkBuild = setInterval(() => {
-    if (fs.existsSync(path.join(outputDir, 'index.html'))) {
+    if (fs.existsSync(path.join(webappDir, 'index.html'))) {
       clearInterval(checkBuild);
       startElectron();
     }
   }, 1000);
 }
 
-// Watch for changes in output directory
-fs.watch(outputDir, { recursive: true }, (eventType, filename) => {
+// Watch for changes in webapp directory
+fs.watch(webappDir, { recursive: true }, (eventType, filename) => {
   if (filename && filename.endsWith('.js') || filename.endsWith('.html') || filename.endsWith('.css')) {
     console.log(`File ${filename} changed, restarting app...`);
     startElectron();

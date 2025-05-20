@@ -14,7 +14,7 @@ function createWindow() {
   });
 
   // Load the index.html from the React build
-  const indexPath = path.join(__dirname, 'output/index.html');
+  const indexPath = path.join(__dirname, 'webapp/index.html');
   console.log('Attempting to load:', indexPath);
 
   // Set the base directory for loading resources

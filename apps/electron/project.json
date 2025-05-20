@@ -8,8 +8,11 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "mkdir -p ./output",
-          "cp -R ../desktop/dist/* ./output/"
+          "mkdir -p ./build/webapp",
+          "cp -R ../desktop/dist/* ./build/webapp/",
+          "cp ./main.js ./build/",
+          "cp ./preload.js ./build/",
+          "cp ./package.json ./build/"
         ],
         "cwd": "{projectRoot}",
         "parallel": false
@@ -21,7 +24,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npx electron .",
+        "command": "npx electron ./build",
         "cwd": "{projectRoot}"
       },
       "dependsOn": [
