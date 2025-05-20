@@ -1,10 +1,10 @@
 {
   "name": "desktop",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "root": "apps/desktop",
-  "sourceRoot": "apps/desktop/src",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/desktop/webapp/src",
   "projectType": "application",
-  "projectRoot": "apps/desktop",
+  "projectRoot": "apps/desktop/webapp",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
@@ -51,6 +51,5 @@
         "passWithNoTests": true
       }
     }
-  },
-  "tags": []
+  }
 }

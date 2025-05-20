@@ -7,10 +7,10 @@
       "path": "./apps/desktop-e2e"
     },
     {
-      "path": "./apps/desktop"
+      "path": "./apps/electron"
     },
     {
-      "path": "./apps/electron"
+      "path": "./apps/desktop/webapp"
     }
   ]
 }
