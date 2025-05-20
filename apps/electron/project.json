@@ -8,7 +8,8 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "mkdir -p apps/electron/output"
+          "mkdir -p apps/electron/output",
+          "cp -R apps/desktop/dist/* apps/electron/output/"
         ],
         "parallel": false
       },
