@@ -4,21 +4,28 @@
   "root": "apps/electron",
   "projectRoot": "apps/electron",
   "targets": {
+    "build-electron": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vite build",
+        "cwd": "{projectRoot}"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
           "mkdir -p ./build/webapp",
           "cp -R ../desktop/dist/* ./build/webapp/",
-          "cp ./main.js ./build/",
-          "cp ./preload.js ./build/",
+          "cp -R ./dist/* ./build/",
           "cp ./package.json ./build/"
         ],
         "cwd": "{projectRoot}",
         "parallel": false
       },
       "dependsOn": [
-        "desktop:build"
+        "desktop:build",
+        "build-electron"
       ]
     },
     "serve": {
@@ -34,8 +41,12 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node build-scripts/watch.js",
-        "cwd": "{projectRoot}"
+        "commands": [
+          "npx vite build --watch",
+          "node build-scripts/watch.js"
+        ],
+        "cwd": "{projectRoot}",
+        "parallel": true
       },
       "dependsOn": [
         "build"
