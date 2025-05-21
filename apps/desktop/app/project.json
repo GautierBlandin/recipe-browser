@@ -1,0 +1,23 @@
+{
+  "name": "desktop-app",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/desktop/app/src",
+  "projectRoot": "apps/desktop/app",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node src/build.js"
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": ["desktop", "@recipe-browser/electron"]
+        }
+      ]
+    }
+  },
+  "tags": []
+}
