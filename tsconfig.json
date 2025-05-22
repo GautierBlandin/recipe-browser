@@ -4,13 +4,10 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/desktop-e2e"
-    },
-    {
-      "path": "./apps/electron"
-    },
-    {
       "path": "./apps/desktop/webapp"
+    },
+    {
+      "path": "./apps/desktop/electron"
     }
   ]
 }
