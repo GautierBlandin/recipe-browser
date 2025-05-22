@@ -1,0 +1,8 @@
+{
+  "name": "@recipe-browser/recipes",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/recipes/src",
+  "projectType": "library",
+  "projectRoot": "libs/web/recipes",
+  "tags": []
+}
