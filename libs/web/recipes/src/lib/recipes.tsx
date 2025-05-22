@@ -1,7 +1,7 @@
 export function Recipes() {
   return (
     <div>
-      <h1>Welcome to Recipes!</h1>
+      <h1 className="text-3xl font-bold">Welcome to Recipes!</h1>
     </div>
   );
 }
