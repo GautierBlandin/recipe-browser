@@ -19,6 +19,9 @@ nx build desktop-app
 # Run the desktop app in development mode
 nx serve desktop-app
 
+# Run the desktop app in production mode
+nx serve desktop-app
+
 # Package the app for distribution
 nx package desktop-app
 ```
