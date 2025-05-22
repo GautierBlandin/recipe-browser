@@ -5,6 +5,7 @@ const path = require('path');
 const electronDistPath = path.resolve(__dirname, '../../electron/dist');
 const webappDistPath = path.resolve(__dirname, '../../webapp/dist');
 const appDistPath = path.resolve(__dirname, '../dist');
+const packageAppPath = path.resolve(__dirname, '../package.app.json');
 
 // Log the paths for debugging
 console.log('Electron dist path:', electronDistPath);
@@ -25,6 +26,10 @@ async function buildApp() {
     await fs.ensureDir(path.join(appDistPath, 'webapp'));
     await fs.copy(webappDistPath, path.join(appDistPath, 'webapp'));
     console.log('Copied webapp files');
+    
+    // Copy package.app.json as package.json
+    await fs.copy(packageAppPath, path.join(appDistPath, 'package.json'));
+    console.log('Copied package.json');
     
     console.log('Build successful!');
   } catch (error) {

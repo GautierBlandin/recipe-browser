@@ -1,5 +1,5 @@
 {
-  "name": "@recipe-browser/desktop-app",
+  "name": "desktop-app",
   "version": "1.0.0",
   "description": "Desktop app for Recipe Browser",
   "private": true
