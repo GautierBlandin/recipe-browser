@@ -10,17 +10,13 @@ function createWindow(): void {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
+      webSecurity: false,
     },
   });
 
   // Load the index.html from the React build
   const indexPath = path.join(__dirname, 'webapp/index.html');
   console.log('Attempting to load:', indexPath);
-
-  // Set the base directory for loading resources
-  mainWindow.webContents.session.setPreloads([
-    path.join(__dirname, 'preload.js'),
-  ]);
 
   // Use loadFile which handles relative paths better in Electron
   mainWindow
@@ -44,8 +40,10 @@ function createWindow(): void {
     }
   );
 
-  // Open DevTools to help diagnose issues
-  mainWindow.webContents.openDevTools();
+  // Open DevTools only in development
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.webContents.openDevTools();
+  }
 
   // Log when page finishes loading or fails
   mainWindow.webContents.on('did-finish-load', () => {
