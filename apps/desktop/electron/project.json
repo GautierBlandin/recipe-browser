@@ -4,51 +4,12 @@
   "projectRoot": "apps/desktop/electron",
   "tags": [],
   "targets": {
-    "build-electron": {
+    "build": {
       "executor": "nx:run-commands",
       "options": {
         "command": "npx vite build",
         "cwd": "{projectRoot}"
       }
-    },
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "mkdir -p ./build/webapp",
-          "cp -R ../desktop/dist/* ./build/webapp/",
-          "cp -R ./dist/* ./build/",
-          "cp ./package.json ./build/"
-        ],
-        "cwd": "{projectRoot}",
-        "parallel": false
-      },
-      "dependsOn": ["desktop:build", "build-electron"]
-    },
-    "serve": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx electron ./build",
-        "cwd": "{projectRoot}"
-      },
-      "dependsOn": ["build"]
-    },
-    "dev": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": ["npx vite build --watch", "node build-scripts/watch.js"],
-        "cwd": "{projectRoot}",
-        "parallel": true
-      },
-      "dependsOn": ["build"]
-    },
-    "package": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx electron-builder --dir",
-        "cwd": "{projectRoot}"
-      },
-      "dependsOn": ["build"]
     }
   }
 }
