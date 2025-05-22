@@ -10,8 +10,8 @@ The look and feel of a spreadsheet is too basic. Also, a recipe is usually more 
 - A recipe is a name and an ingredient list along with their quantities
 - Be able to add a recipe
 ## Roadmap
-- I have an app that I can open and see "Hello world"
-- Inside the app, I can see a list of recipes, that only have a name
+- [x] have an app that I can open and see "Hello world"
+- [X] Inside the app, I can see a list of recipes, that only have a name
 - I can double-click on a recipe to open it
 - The recipe has a name and shows ingredients
 - I can add a recipe
