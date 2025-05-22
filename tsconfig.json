@@ -8,6 +8,9 @@
     },
     {
       "path": "./apps/desktop/electron"
+    },
+    {
+      "path": "./libs/web/recipes"
     }
   ]
 }

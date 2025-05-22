@@ -1,10 +1,8 @@
-import NxWelcome from './nx-welcome';
+import { Recipes } from '@recipe-browser/recipes';
 
 export function App() {
   return (
-    <div>
-      <NxWelcome title="@recipe-browser/desktop" />
-    </div>
+    <Recipes />
   );
 }
 
