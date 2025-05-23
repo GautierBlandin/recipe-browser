@@ -1,4 +1,4 @@
-import { Recipe } from './models/recipe';
+import { Recipe } from '../models';
 
 export class RecipesRepository {
   private recipes: Recipe[] = [

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { Recipe } from './models/recipe';
+import { Recipe } from '../models';
 import { RecipesContainer } from './recipes';
-import { RecipesRepository } from './recipes.repository';
+import { RecipesRepository } from '../ports';
 
 describe('RecipesContainer', () => {
   let repository: RecipesRepository;
@@ -16,7 +16,7 @@ describe('RecipesContainer', () => {
       { id: '2', name: 'Recipe 2' },
     ];
     repository.setRecipes(defaultRecipes);
-    
+
     const { baseElement } = render(<RecipesContainer recipesRepository={repository} />);
     expect(baseElement).toBeTruthy();
   });
@@ -27,7 +27,7 @@ describe('RecipesContainer', () => {
       { id: '2', name: 'Recipe 2' },
     ];
     repository.setRecipes(defaultRecipes);
-    
+
     render(<RecipesContainer recipesRepository={repository} />);
     expect(screen.getByText('My Recipe Collection')).toBeTruthy();
   });
@@ -38,7 +38,7 @@ describe('RecipesContainer', () => {
       { id: '2', name: 'Pasta Pesto' },
     ];
     repository.setRecipes(recipes);
-    
+
     render(<RecipesContainer recipesRepository={repository} />);
 
     expect(screen.getByText('Roasted Chicken')).toBeTruthy();
@@ -52,7 +52,7 @@ describe('RecipesContainer', () => {
       { id: '3', name: 'Recipe 3' },
     ];
     repository.setRecipes(recipes);
-    
+
     render(<RecipesContainer recipesRepository={repository} />);
 
     const clickInstructions = screen.getAllByText('Click to view recipe');

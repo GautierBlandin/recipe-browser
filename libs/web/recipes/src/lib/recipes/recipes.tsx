@@ -1,5 +1,5 @@
 import { RecipesList } from './recipes-list';
-import { RecipesRepository } from './recipes.repository';
+import { RecipesRepository } from '../ports';
 
 interface RecipesContainerProps {
   recipesRepository: RecipesRepository;
