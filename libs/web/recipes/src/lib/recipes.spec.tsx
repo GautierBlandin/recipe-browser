@@ -4,8 +4,8 @@ import { RecipesList } from './recipes-list';
 
 describe('RecipesList', () => {
   const defaultRecipes: Recipe[] = [
-    { id: 1, name: 'Recipe 1' },
-    { id: 2, name: 'Recipe 2' },
+    { id: '1', name: 'Recipe 1' },
+    { id: '2', name: 'Recipe 2' },
   ];
 
   it('should render successfully', () => {
@@ -20,8 +20,8 @@ describe('RecipesList', () => {
 
   it('should display specific recipe names', () => {
     const recipes: Recipe[] = [
-      { id: 1, name: 'Roasted Chicken' },
-      { id: 2, name: 'Pasta Pesto' },
+      { id: '1', name: 'Roasted Chicken' },
+      { id: '2', name: 'Pasta Pesto' },
     ];
     render(<RecipesList recipes={recipes} />);
 
@@ -31,9 +31,9 @@ describe('RecipesList', () => {
 
   it('should display click instructions for each recipe', () => {
     const recipes: Recipe[] = [
-      { id: 1, name: 'Recipe 1' },
-      { id: 2, name: 'Recipe 2' },
-      { id: 3, name: 'Recipe 3' },
+      { id: '1', name: 'Recipe 1' },
+      { id: '2', name: 'Recipe 2' },
+      { id: '3', name: 'Recipe 3' },
     ];
     render(<RecipesList recipes={recipes} />);
 

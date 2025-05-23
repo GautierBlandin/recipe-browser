@@ -1,4 +1,4 @@
 export interface Recipe {
-  id: number;
+  id: string;
   name: string;
 }
