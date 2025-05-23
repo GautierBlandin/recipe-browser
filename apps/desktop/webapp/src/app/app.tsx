@@ -1,8 +1,12 @@
-import { Recipes } from '@recipe-browser/recipes';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { recipesRoute } from '@recipe-browser/recipes';
 
 export function App() {
   return (
-    <Recipes />
+    <Routes>
+      {recipesRoute}
+      <Route path="/" element={<Navigate to="/recipes" replace />} />
+    </Routes>
   );
 }
 
