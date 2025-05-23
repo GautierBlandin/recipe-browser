@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Recipe } from '../models';
 
 interface RecipesListProps {
@@ -5,6 +6,8 @@ interface RecipesListProps {
 }
 
 export function RecipesList(props: RecipesListProps) {
+  const navigate = useNavigate();
+  
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">My Recipe Collection</h1>
@@ -14,6 +17,7 @@ export function RecipesList(props: RecipesListProps) {
           <div
             key={recipe.id}
             className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 p-6 border border-gray-200 cursor-pointer hover:bg-gray-50"
+            onClick={() => navigate(`/recipes/${recipe.id}`)}
           >
             <h3 className="text-lg font-semibold text-gray-800 mb-2">
               {recipe.name}
