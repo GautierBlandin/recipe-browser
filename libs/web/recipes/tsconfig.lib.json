@@ -5,8 +5,10 @@
     "types": [
       "node",
       "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
+      "@nx/react/typings/image.d.ts",
+      "react"
     ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "rootDir": "src",
     "jsx": "react-jsx",
     "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
