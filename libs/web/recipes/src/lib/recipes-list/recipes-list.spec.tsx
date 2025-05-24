@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import { buildTestRecipe } from '../models/recipe.sample';
-import { RecipesContainer } from './recipes';
+import { RecipesListContainer } from './recipes-list';
 import { RecipesRepository } from '../ports';
 
 describe('RecipesContainer', () => {
@@ -20,7 +20,7 @@ describe('RecipesContainer', () => {
 
     const { baseElement } = render(
       <HashRouter>
-        <RecipesContainer recipesRepository={repository} />
+        <RecipesListContainer recipesRepository={repository} />
       </HashRouter>
     );
     expect(baseElement).toBeTruthy();
@@ -35,7 +35,7 @@ describe('RecipesContainer', () => {
 
     render(
       <HashRouter>
-        <RecipesContainer recipesRepository={repository} />
+        <RecipesListContainer recipesRepository={repository} />
       </HashRouter>
     );
     expect(screen.getByText('My Recipe Collection')).toBeTruthy();
@@ -50,7 +50,7 @@ describe('RecipesContainer', () => {
 
     render(
       <HashRouter>
-        <RecipesContainer recipesRepository={repository} />
+        <RecipesListContainer recipesRepository={repository} />
       </HashRouter>
     );
 
@@ -68,7 +68,7 @@ describe('RecipesContainer', () => {
 
     render(
       <HashRouter>
-        <RecipesContainer recipesRepository={repository} />
+        <RecipesListContainer recipesRepository={repository} />
       </HashRouter>
     );
 
