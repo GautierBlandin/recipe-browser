@@ -14,4 +14,5 @@ The look and feel of a spreadsheet is too basic. Also, a recipe is usually more 
 - [X] Inside the app, I can see a list of recipes, that only have a name
 - [x] Recipes have a dedicated page
 - [x] I can double-click on a recipe to open it
-- [ ] There a way for me to navigate inside the app
+- [x] There a way for me to navigate inside the app
+- -

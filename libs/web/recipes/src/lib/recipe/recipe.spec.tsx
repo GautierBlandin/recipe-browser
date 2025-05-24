@@ -3,6 +3,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import { buildTestRecipe } from '../models/recipe.sample';
 import { RecipeContainer } from './recipe-container';
 import { RecipesRepository } from '../ports';
+import { RECIPES_ROUTE } from '../recipes-route.constants';
 
 describe('RecipeContainer', () => {
   let repository: RecipesRepository;
@@ -16,7 +17,7 @@ describe('RecipeContainer', () => {
       <HashRouter>
         <Routes>
           <Route
-            path="/recipes/:id"
+            path={`${RECIPES_ROUTE}/:id`}
             element={<RecipeContainer recipesRepository={repository} />}
           />
         </Routes>
