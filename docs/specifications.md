@@ -12,10 +12,6 @@ The look and feel of a spreadsheet is too basic. Also, a recipe is usually more 
 ## Roadmap
 - [x] have an app that I can open and see "Hello world"
 - [X] Inside the app, I can see a list of recipes, that only have a name
-- [x] Recipes have a dedicated page.
+- [x] Recipes have a dedicated page
 - [x] I can double-click on a recipe to open it
-- The recipe has a name and shows ingredients
-- I can add a recipe
-- I can edit a recipe
-- I can remove a recipe
-- The recipes are versioned
+- [ ] There a way for me to navigate inside the app

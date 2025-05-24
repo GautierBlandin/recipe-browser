@@ -1,5 +1,6 @@
 import { RecipesListView } from './recipes-list.view';
 import { RecipesRepository } from '../ports';
+import { NavbarLayout } from '../navigation';
 
 interface RecipesContainerProps {
   recipesRepository: RecipesRepository;
@@ -13,5 +14,9 @@ export function RecipesListContainer({ recipesRepository }: RecipesContainerProp
 const recipesRepository = new RecipesRepository();
 
 export function RecipesList() {
-  return <RecipesListContainer recipesRepository={recipesRepository} />;
+  return (
+    <NavbarLayout>
+      <RecipesListContainer recipesRepository={recipesRepository} />
+    </NavbarLayout>
+  );
 }
