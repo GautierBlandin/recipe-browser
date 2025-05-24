@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
 import { buildTestRecipe } from '../models/recipe.sample';
 import { RecipeContainer } from './recipe-container';
 import { RecipesRepository } from '../ports';
-import { RECIPES_ROUTE } from '../recipes-route.constants';
+import { TestContainer } from '../test-infrastructure';
 
 describe('RecipeContainer', () => {
   let repository: RecipesRepository;
@@ -12,28 +11,16 @@ describe('RecipeContainer', () => {
     repository = new RecipesRepository();
   });
 
-  const renderWithRoute = (recipeId: string) => {
+  const renderComponent = (recipeId?: string) => {
     return render(
-      <HashRouter>
-        <Routes>
-          <Route
-            path={`${RECIPES_ROUTE}/:id`}
-            element={<RecipeContainer recipesRepository={repository} />}
-          />
-        </Routes>
-      </HashRouter>,
-      {
-        // Set initial route
-        wrapper: ({ children }) => {
-          window.location.hash = `/recipes/${recipeId}`;
-          return <>{children}</>;
-        },
-      }
+      <TestContainer>
+        <RecipeContainer recipesRepository={repository} id={recipeId} />
+      </TestContainer>
     );
   };
 
   it('should display recipe not found when recipe does not exist', () => {
-    renderWithRoute('non-existent-id');
+    renderComponent('non-existent-id');
     expect(screen.getByText('Recipe not found')).toBeTruthy();
   });
 
@@ -41,7 +28,7 @@ describe('RecipeContainer', () => {
     const recipe = buildTestRecipe({ id: '1', name: 'Chocolate Cake' });
     repository.setRecipes([recipe]);
 
-    renderWithRoute('1');
+    renderComponent('1');
 
     expect(screen.getByText('Chocolate Cake')).toBeTruthy();
     expect(screen.getByText('Recipe details for Chocolate Cake will be displayed here.')).toBeTruthy();
@@ -51,7 +38,7 @@ describe('RecipeContainer', () => {
     const recipe = buildTestRecipe({ id: 'test-123' });
     repository.setRecipes([recipe]);
 
-    renderWithRoute('test-123');
+    renderComponent('test-123');
 
     expect(screen.getByText('Test Recipe test-123')).toBeTruthy();
     expect(screen.getByText('Recipe details for Test Recipe test-123 will be displayed here.')).toBeTruthy();
@@ -65,7 +52,7 @@ describe('RecipeContainer', () => {
     ];
     repository.setRecipes(recipes);
 
-    renderWithRoute('2');
+    renderComponent('2');
 
     expect(screen.getByText('Banana Bread')).toBeTruthy();
     expect(screen.queryByText('Apple Pie')).toBeFalsy();

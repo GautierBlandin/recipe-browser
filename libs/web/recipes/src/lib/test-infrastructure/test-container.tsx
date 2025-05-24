@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import { HashRouter, Routes } from 'react-router-dom';
-import { recipesRoute } from '../recipes-route';
+import { HashRouter } from 'react-router-dom';
 
 interface TestContainerProps {
   children: ReactNode;
@@ -9,9 +8,6 @@ interface TestContainerProps {
 export function TestContainer({ children }: TestContainerProps) {
   return (
     <HashRouter>
-      <Routes>
-        {recipesRoute}
-      </Routes>
       {children}
     </HashRouter>
   );

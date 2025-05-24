@@ -1,14 +1,12 @@
-import { useParams } from 'react-router-dom';
 import { RecipesRepository } from '../ports';
 import { RecipeView } from './recipe-view';
 
 interface RecipeContainerProps {
   recipesRepository: RecipesRepository;
+  id?: string;
 }
 
-export function RecipeContainer({ recipesRepository }: RecipeContainerProps) {
-  const { id } = useParams<{ id: string }>();
-  
+export function RecipeContainer({ recipesRepository, id }: RecipeContainerProps) {
   if (!id) {
     return <div className="max-w-4xl mx-auto p-6">Recipe ID not provided</div>;
   }
