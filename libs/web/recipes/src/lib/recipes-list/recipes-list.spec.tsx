@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { HashRouter } from 'react-router-dom';
 import { buildTestRecipe } from '../models/recipe.sample';
 import { RecipesListContainer } from './recipes-list';
 import { RecipesRepository } from '../ports';
+import { TestContainer } from '../test-infrastructure';
 
 describe('RecipesContainer', () => {
   let repository: RecipesRepository;
@@ -19,9 +19,9 @@ describe('RecipesContainer', () => {
     repository.setRecipes(defaultRecipes);
 
     const { baseElement } = render(
-      <HashRouter>
+      <TestContainer>
         <RecipesListContainer recipesRepository={repository} />
-      </HashRouter>
+      </TestContainer>
     );
     expect(baseElement).toBeTruthy();
   });
@@ -34,9 +34,9 @@ describe('RecipesContainer', () => {
     repository.setRecipes(defaultRecipes);
 
     render(
-      <HashRouter>
+      <TestContainer>
         <RecipesListContainer recipesRepository={repository} />
-      </HashRouter>
+      </TestContainer>
     );
     expect(screen.getByText('My Recipe Collection')).toBeTruthy();
   });
@@ -49,9 +49,9 @@ describe('RecipesContainer', () => {
     repository.setRecipes(recipes);
 
     render(
-      <HashRouter>
+      <TestContainer>
         <RecipesListContainer recipesRepository={repository} />
-      </HashRouter>
+      </TestContainer>
     );
 
     expect(screen.getByText('Roasted Chicken')).toBeTruthy();
@@ -67,9 +67,9 @@ describe('RecipesContainer', () => {
     repository.setRecipes(recipes);
 
     render(
-      <HashRouter>
+      <TestContainer>
         <RecipesListContainer recipesRepository={repository} />
-      </HashRouter>
+      </TestContainer>
     );
 
     const clickInstructions = screen.getAllByText('Click to view recipe');
