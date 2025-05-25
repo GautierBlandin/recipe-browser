@@ -127,4 +127,20 @@ export class RecipesRepository {
   setRecipes(recipes: Recipe[]): void {
     this.recipes = recipes;
   }
+
+  createRecipe(name: string): Recipe {
+    const id = this.generateUniqueId();
+    const newRecipe: Recipe = {
+      id,
+      name
+    };
+    this.recipes.push(newRecipe);
+    return newRecipe;
+  }
+
+  private generateUniqueId(): string {
+    const timestamp = Date.now().toString(36);
+    const randomPart = Math.random().toString(36).substring(2, 8);
+    return `rcp_${timestamp}-${randomPart}`;
+  }
 }
