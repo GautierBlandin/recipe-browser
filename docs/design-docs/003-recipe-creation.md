@@ -44,8 +44,8 @@ Test repository behavior:
 ## Steps
 
 ### 1. Extend Repository Interface
-- [ ] Add `createRecipe(name: string): Recipe` method to `RecipesRepository` interface
-- [ ] Update in-memory repository implementation to generate unique IDs and store new recipes. The IDs should use the object id pattern (e.g rcp_unique-id)
+- [x] Add `createRecipe(name: string): Recipe` method to `RecipesRepository` interface
+- [x] Update in-memory repository implementation to generate unique IDs and store new recipes. The IDs should use the object id pattern (e.g rcp_unique-id)
 
 ### 2. Add Creation UI to Recipes List
 - [ ] Add "Add Recipe" button to recipes list component
