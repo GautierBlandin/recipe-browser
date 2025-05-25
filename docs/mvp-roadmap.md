@@ -25,16 +25,14 @@
 - [x] Update RecipeView to display all recipe fields in a structured layout
 
 ### Phase 3: Recipe Creation
-- [ ] Add "Create Recipe" button to recipes list page
-- [ ] Create recipe creation form with all cookbook fields
-- [ ] Implement form submission to create new recipe
+- [ ] Add an Add Recipe button to recipes list page.
+- [ ] When creating a recipe, the only thing that should be provided is the name.
 - [ ] Navigate to newly created recipe after creation
-- [ ] Update recipes list to show new recipe
+- [ ] Check that when doing the flow Create Recipe --> Navigate to Recipe --> Navigate back to Recipes List, the new recipe is displayed
 
 ### Phase 4: Recipe Editing
 - [ ] Add "Edit Recipe" button to recipe view
-- [ ] Create recipe edit form (can reuse creation form components)
-- [ ] Implement form submission to update existing recipe
+- [ ] Design recipe edition
 - [ ] Show updated content immediately after editing
 
 ### Phase 5: Recipe Deletion
@@ -42,7 +40,7 @@
 - [ ] Add confirmation dialog for deletion
 - [ ] Implement recipe deletion functionality
 - [ ] Navigate back to recipes list after deletion
-- [ ] Update recipes list to remove deleted recipe
+- [ ] Make sure the recipe is removed from the list
 
 ### Phase 6: Local Persistence
 - [ ] Define and implement a storage solution that leverages electron (probably some sort of file storage). Make sure the solution is compatible with a webapp (file API)
