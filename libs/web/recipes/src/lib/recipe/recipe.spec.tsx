@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { buildTestRecipe } from '../models/recipe.sample';
-import { RecipeContainer } from './recipe-container';
+import { RecipeContainer } from './recipe.container';
 import { RecipesRepository } from '../ports';
 import { TestContainer } from '../test-infrastructure';
 
@@ -25,8 +25,8 @@ describe('RecipeContainer', () => {
   });
 
   it('should display recipe view when recipe exists', () => {
-    const recipe = buildTestRecipe({ 
-      id: '1', 
+    const recipe = buildTestRecipe({
+      id: '1',
       name: 'Chocolate Cake',
       description: 'A rich chocolate cake',
       ingredients: [
@@ -65,8 +65,8 @@ describe('RecipeContainer', () => {
   });
 
   it('should display ingredients without portions', () => {
-    const recipe = buildTestRecipe({ 
-      id: '1', 
+    const recipe = buildTestRecipe({
+      id: '1',
       name: 'No Portion Recipe',
       ingredients: [
         { name: 'salt' },
