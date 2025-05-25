@@ -10,5 +10,9 @@
       "default": "./src/index.ts"
     },
     "./package.json": "./package.json"
+  },
+  "nx": {
+    "projectType": "library",
+    "sourceRoot": "libs/web/recipes/src"
   }
 }

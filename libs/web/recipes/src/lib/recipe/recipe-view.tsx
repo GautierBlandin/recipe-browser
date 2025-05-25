@@ -1,4 +1,5 @@
 import { Recipe, formatRecipeIngredient } from '../models';
+import { Main, Card, PageHeading, SectionHeading } from '@recipe-browser/shared-ui';
 
 interface RecipeViewProps {
   recipe: Recipe;
@@ -6,22 +7,22 @@ interface RecipeViewProps {
 
 export function RecipeView({ recipe }: RecipeViewProps) {
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-neutral-primary mb-8">{recipe.name}</h1>
+    <Main>
+      <PageHeading>{recipe.name}</PageHeading>
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Description */}
         {recipe.description && (
-          <div className="bg-neutral-primary rounded-lg shadow-md p-6 border border-neutral-primary md:col-span-2">
-            <h2 className="text-xl font-semibold text-neutral-primary mb-3">Description</h2>
+          <Card className="md:col-span-2">
+            <SectionHeading>Description</SectionHeading>
             <p className="text-neutral-secondary">{recipe.description}</p>
-          </div>
+          </Card>
         )}
 
         {/* Recipe Info */}
         {(recipe.cookingTimeMinutes || recipe.servings) && (
-          <div className="bg-neutral-primary rounded-lg shadow-md p-6 border border-neutral-primary">
-            <h2 className="text-xl font-semibold text-neutral-primary mb-3">Recipe Info</h2>
+          <Card>
+            <SectionHeading>Recipe Info</SectionHeading>
             <div className="space-y-2">
               {recipe.cookingTimeMinutes && (
                 <div className="flex justify-between">
@@ -36,13 +37,13 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                 </div>
               )}
             </div>
-          </div>
+          </Card>
         )}
 
         {/* Ingredients */}
         {recipe.ingredients && recipe.ingredients.length > 0 && (
-          <div className="bg-neutral-primary rounded-lg shadow-md p-6 border border-neutral-primary">
-            <h2 className="text-xl font-semibold text-neutral-primary mb-3">Ingredients</h2>
+          <Card>
+            <SectionHeading>Ingredients</SectionHeading>
             <ul className="space-y-2">
               {recipe.ingredients.map((ingredient, index) => (
                 <li key={index} className="text-neutral-secondary flex items-center">
@@ -51,13 +52,13 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                 </li>
               ))}
             </ul>
-          </div>
+          </Card>
         )}
 
         {/* Steps */}
         {recipe.steps && recipe.steps.length > 0 && (
-          <div className="bg-neutral-primary rounded-lg shadow-md p-6 border border-neutral-primary md:col-span-2">
-            <h2 className="text-xl font-semibold text-neutral-primary mb-3">Cooking Instructions</h2>
+          <Card className="md:col-span-2">
+            <SectionHeading>Cooking Instructions</SectionHeading>
             <ol className="space-y-3">
               {recipe.steps.map((step, index) => (
                 <li key={index} className="text-neutral-secondary flex">
@@ -68,9 +69,9 @@ export function RecipeView({ recipe }: RecipeViewProps) {
                 </li>
               ))}
             </ol>
-          </div>
+          </Card>
         )}
       </div>
-    </div>
+    </Main>
   );
 }

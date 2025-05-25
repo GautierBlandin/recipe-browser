@@ -1,0 +1,8 @@
+{
+  "name": "@recipe-browser/shared-ui",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/shared-ui/src",
+  "projectType": "library",
+  "projectRoot": "libs/shared-ui/recipes",
+  "tags": []
+}
