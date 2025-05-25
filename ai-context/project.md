@@ -10,7 +10,8 @@ apps/desktop
 ├── electron: Electron application wrapper (small, enables building the electron part)
 ├── app: combines the webapp and electron into a runnable application
 
-libs/web/recipes: Components and logic for the recipes domain of the webapp
+libs/web/recipes: Components and logic for the recipes domain of the webapp (name: @recipe-browser/recipes)
+libs/web/shared-ui: Shared UI components and utilities (name: @recipe-browser/shared-ui)
 ```
 ## Running targets
 
