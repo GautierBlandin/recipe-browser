@@ -21,9 +21,8 @@
 - [x] enable navigation from recipes list to recipe and from recipe to recipes list
 
 ### Phase 2: Recipe Data Model & UI Enhancement
-- [ ] Expand Recipe model to include all cookbook fields (description, ingredients, steps, cooking time)
-- [ ] Update RecipeView to display all recipe fields in a structured layout
-- [ ] Add placeholder content for empty fields to show the structure
+- [x] Expand Recipe model to include all cookbook fields (description, ingredients, steps, cooking time)
+- [x] Update RecipeView to display all recipe fields in a structured layout
 
 ### Phase 3: Recipe Creation
 - [ ] Add "Create Recipe" button to recipes list page
