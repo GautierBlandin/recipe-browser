@@ -9,12 +9,12 @@ function Navigation() {
   };
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200 px-4 py-3">
+    <nav className="bg-neutral-primary shadow-sm border-b border-neutral-primary px-4 py-3">
       <div className="flex items-center">
-        <h1 className="text-xl font-semibold text-gray-900 mr-6">Recipe Browser</h1>
+        <h1 className="text-xl font-semibold text-neutral-primary mr-6">Recipe Browser</h1>
         <button
           onClick={handleNavigateToRecipes}
-          className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+          className="px-4 py-2 text-sm font-medium text-neutral-secondary bg-neutral-secondary hover:bg-neutral-secondary-hover rounded-md transition-colors"
         >
           View Recipes
         </button>
