@@ -21,7 +21,7 @@ When writing tests, follow these key principles:
 ## Test Quality
 
 - Make tests concise and complete: included all relevant information, exclude any unnecessary information
-```ts
+```
 export interface Recipe {
   id: string;
   name: string;
