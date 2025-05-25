@@ -57,20 +57,6 @@ describe('RecipesContainer', () => {
     expect(screen.getByText('Pasta Pesto')).toBeTruthy();
   });
 
-  it('should display click instructions for each recipe', () => {
-    const recipes = [
-      buildTestRecipe({ id: '1', name: 'Recipe 1' }),
-      buildTestRecipe({ id: '2', name: 'Recipe 2' }),
-      buildTestRecipe({ id: '3', name: 'Recipe 3' }),
-    ];
-    repository.setRecipes(recipes);
-
-    renderComponent();
-
-    const clickInstructions = screen.getAllByText('Click to view recipe');
-    expect(clickInstructions).toHaveLength(3);
-  });
-
   it('should navigate to recipe detail page when a recipe is clicked', () => {
     const recipes = [
       buildTestRecipe({ id: 'recipe-123', name: 'Chocolate Cake' }),

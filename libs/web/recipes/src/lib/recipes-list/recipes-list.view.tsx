@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Recipe } from '../models';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
-import { Card, CardTitle, PageHeading, SmallText } from '@recipe-browser/shared-ui';
+import { Card, CardTitle, PageHeading } from '@recipe-browser/shared-ui';
 
 interface RecipesListProps {
   recipes: Recipe[];
@@ -19,7 +19,6 @@ export function RecipesListView(props: RecipesListProps) {
               <CardTitle className="mb-2">
                 {recipe.name}
               </CardTitle>
-              <SmallText>Click to view recipe</SmallText>
             </Card>
           </Link>
         ))}
