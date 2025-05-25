@@ -1,4 +1,5 @@
 ## Post-MVP feature ideas
+- Ability to CRUD images for a recipe
 - Ability to undo edits on a recipe
 - Ability to backup the recipes
 - Ability to export a recipe to PDF
