@@ -13,7 +13,7 @@ The RecipeView displays only the recipe name with placeholder text.
 ## Steps
 
 ### 1. Expand Recipe Model
-- [ ] Update `Recipe` interface in `libs/web/recipes/src/lib/models/recipe.ts` to include:
+- [x] Update `Recipe` interface in `libs/web/recipes/src/lib/models/recipe.ts` to include:
   - `description?: string` - longer description of what the recipe is
   - `ingredients?: string[]` - list of ingredients per portion 
   - `steps?: string[]` - step-by-step cooking instructions
@@ -21,23 +21,22 @@ The RecipeView displays only the recipe name with placeholder text.
   - `servings?: number` - number of portions this recipe makes
 
 ### 2. Update Sample Recipe Builder
-- [ ] Modify `buildTestRecipe` in `recipe.sample.ts` to optionally include new fields
-- [ ] Update existing sample function to add default values for the new fields
+- [x] Modify `buildTestRecipe` in `recipe.sample.ts` to optionally include new fields
+- [x] Update existing sample function to add default values for the new fields
 
 ### 3. Update RecipeView Component
-- [ ] Enhance `RecipeView` in `recipe-view.tsx` to display all recipe fields:
+- [x] Enhance `RecipeView` in `recipe-view.tsx` to display all recipe fields:
   - Recipe title (existing)
   - Description section (if provided)
   - Ingredients list (if provided)
   - Cooking steps (if provided) 
   - Cooking time and servings info (if provided)
-- [ ] Add placeholder content for empty fields to show the expected structure
-- [ ] Use responsive layout that works well for both populated and sparse recipes
+- [x] Use responsive layout that works well for both populated and sparse recipes
 
 ### 4. Update Tests
-- [ ] Update existing tests to work with expanded Recipe model
-- [ ] Add tests for RecipeView displaying various combinations of filled/empty fields
-- [ ] Ensure tests cover edge cases like empty arrays and undefined values
+- [x] Update existing tests to work with expanded Recipe model
+- [x] Add tests for RecipeView displaying various combinations of filled/empty fields
+- [x] Ensure tests cover edge cases like empty arrays and undefined values
 
 ## Design Considerations
 
