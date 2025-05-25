@@ -8,8 +8,10 @@ interface MainProps {
 
 export function Main({ children, className }: MainProps) {
   return (
-    <main className={cn('flex-1 overflow-auto max-w-4xl mx-auto p-6', className)}>
-      {children}
+    <main className={cn('flex-1 overflow-auto', className)}>
+      <div className="max-w-4xl mx-auto p-6">
+        {children}
+      </div>
     </main>
   );
 }

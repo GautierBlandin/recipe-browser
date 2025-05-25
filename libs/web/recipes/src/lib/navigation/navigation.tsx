@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Main } from '@recipe-browser/shared-ui';
 
 function Navigation() {
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ export function NavbarLayout({ children }: NavbarLayoutProps) {
   return (
     <div className="flex flex-col h-screen">
       <Navigation />
-      <main className="flex-1 overflow-auto">
+      <Main>
         {children}
-      </main>
+      </Main>
     </div>
   );
 }

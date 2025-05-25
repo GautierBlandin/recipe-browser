@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Recipe } from '../models';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
-import { Main, Card, CardTitle, PageHeading, SmallText } from '@recipe-browser/shared-ui';
+import { Card, CardTitle, PageHeading, SmallText } from '@recipe-browser/shared-ui';
 
 interface RecipesListProps {
   recipes: Recipe[];
@@ -9,7 +9,7 @@ interface RecipesListProps {
 
 export function RecipesListView(props: RecipesListProps) {
   return (
-    <Main>
+    <>
       <PageHeading>My Recipe Collection</PageHeading>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -24,6 +24,6 @@ export function RecipesListView(props: RecipesListProps) {
           </Link>
         ))}
       </div>
-    </Main>
+    </>
   );
 }
