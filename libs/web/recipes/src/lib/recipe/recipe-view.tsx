@@ -1,6 +1,9 @@
-import { Recipe, formatRecipeIngredient } from '../models';
-import { Main, Card, PageHeading, CardTitle } from '@recipe-browser/shared-ui';
-import { ReactNode } from 'react';
+import { Recipe } from '../models';
+import { Main, PageHeading } from '@recipe-browser/shared-ui';
+import { RecipeDescriptionView } from './ui/recipe-description.view';
+import { RecipeInfoView } from './ui/recipe-info.view';
+import { RecipeIngredientsView } from './ui/recipe-ingredients.view';
+import { RecipeStepsView } from './ui/recipe-steps.view';
 
 interface RecipeViewProps {
   recipe: Recipe;
@@ -12,73 +15,14 @@ export function RecipeView({ recipe }: RecipeViewProps) {
       <PageHeading>{recipe.name}</PageHeading>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {/* Description */}
-        {recipe.description && (
-          <Card className="md:col-span-2">
-            <CustomCardTitle>Description</CustomCardTitle>
-            <p className="text-neutral-secondary">{recipe.description}</p>
-          </Card>
-        )}
-
-        {/* Recipe Info */}
-        {(recipe.cookingTimeMinutes || recipe.servings) && (
-          <Card>
-            <CustomCardTitle>Recipe Info</CustomCardTitle>
-            <div className="space-y-2">
-              {recipe.cookingTimeMinutes && (
-                <div className="flex justify-between">
-                  <span className="text-neutral-tertiary">Cooking Time:</span>
-                  <span className="text-neutral-primary">{recipe.cookingTimeMinutes} minutes</span>
-                </div>
-              )}
-              {recipe.servings && (
-                <div className="flex justify-between">
-                  <span className="text-neutral-tertiary">Servings:</span>
-                  <span className="text-neutral-primary">{recipe.servings}</span>
-                </div>
-              )}
-            </div>
-          </Card>
-        )}
-
-        {/* Ingredients */}
-        {recipe.ingredients && recipe.ingredients.length > 0 && (
-          <Card>
-            <CustomCardTitle>Ingredients</CustomCardTitle>
-            <ul className="space-y-2">
-              {recipe.ingredients.map((ingredient, index) => (
-                <li key={index} className="text-neutral-secondary flex items-center">
-                  <span className="w-2 h-2 bg-neutral-tertiary rounded-full mr-3 flex-shrink-0"></span>
-                  {formatRecipeIngredient(ingredient)}
-                </li>
-              ))}
-            </ul>
-          </Card>
-        )}
-
-        {/* Steps */}
-        {recipe.steps && recipe.steps.length > 0 && (
-          <Card className="md:col-span-2">
-            <CustomCardTitle>Cooking Instructions</CustomCardTitle>
-            <ol className="space-y-3">
-              {recipe.steps.map((step, index) => (
-                <li key={index} className="text-neutral-secondary flex">
-                  <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium mr-3 flex-shrink-0 mt-0.5">
-                    {index + 1}
-                  </span>
-                  <span>{step}</span>
-                </li>
-              ))}
-            </ol>
-          </Card>
-        )}
+        <RecipeDescriptionView description={recipe.description} />
+        <RecipeInfoView 
+          cookingTimeMinutes={recipe.cookingTimeMinutes} 
+          servings={recipe.servings} 
+        />
+        <RecipeIngredientsView ingredients={recipe.ingredients} />
+        <RecipeStepsView steps={recipe.steps} />
       </div>
     </Main>
   );
-}
-
-function CustomCardTitle({ children }: { children: ReactNode }) {
-  return (
-    <CardTitle className="mb-2">{children}</CardTitle>
-  )
 }
