@@ -1,3 +1,5 @@
+import { RecipeIngredient } from './recipe-ingredient';
+
 export interface Recipe {
   id: string;
   name: string;
@@ -6,21 +8,4 @@ export interface Recipe {
   steps?: string[];
   cookingTimeMinutes?: number;
   servings?: number;
-}
-
-export interface RecipeIngredient {
-  name: string;
-  portion?: Portion;
-}
-
-export function formatRecipeIngredient(ingredient: RecipeIngredient): string {
-  if (!ingredient.portion) {
-    return ingredient.name;
-  }
-  return `${ingredient.portion.quantity} ${ingredient.portion.unit} ${ingredient.name}`;
-}
-
-export interface Portion {
-  unit: string;
-  quantity: number;
 }

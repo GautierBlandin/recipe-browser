@@ -1,4 +1,7 @@
-import { Recipe, RecipeIngredient } from './recipe';
+import { Recipe } from './recipe';
+import { RecipeIngredient } from './recipe-ingredient';
+import { buildTestRecipeIngredient } from './recipe-ingredient.sample';
+import { buildTestPortion } from './portion.sample';
 
 export function buildTestRecipe({ 
   id, 
@@ -22,11 +25,11 @@ export function buildTestRecipe({
     name: name ?? `Test Recipe ${id}`,
     description: description ?? `A delicious test recipe for ${name ?? `Test Recipe ${id}`}`,
     ingredients: ingredients ?? [
-      { name: 'flour', portion: { quantity: 2, unit: 'cups' } },
-      { name: 'sugar', portion: { quantity: 1, unit: 'cup' } },
-      { name: 'butter', portion: { quantity: 0.5, unit: 'cup' } },
-      { name: 'eggs', portion: { quantity: 2, unit: 'absolute' } },
-      { name: 'vanilla extract' }
+      buildTestRecipeIngredient({ name: 'flour', portion: buildTestPortion({ quantity: 2, unit: 'cups' }) }),
+      buildTestRecipeIngredient({ name: 'sugar', portion: buildTestPortion({ quantity: 1, unit: 'cup' }) }),
+      buildTestRecipeIngredient({ name: 'butter', portion: buildTestPortion({ quantity: 0.5, unit: 'cup' }) }),
+      buildTestRecipeIngredient({ name: 'eggs', portion: buildTestPortion({ quantity: 2, unit: 'absolute' }) }),
+      buildTestRecipeIngredient({ name: 'vanilla extract', portion: null })
     ],
     steps: steps ?? [
       'Preheat oven to 350°F',
