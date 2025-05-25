@@ -25,37 +25,59 @@ describe('RecipeContainer', () => {
   });
 
   it('should display recipe view when recipe exists', () => {
-    const recipe = buildTestRecipe({ id: '1', name: 'Chocolate Cake' });
+    const recipe = buildTestRecipe({ 
+      id: '1', 
+      name: 'Chocolate Cake',
+      description: 'A rich chocolate cake',
+      ingredients: [
+        { name: 'flour', portion: { quantity: 2, unit: 'cups' } },
+        { name: 'sugar', portion: { quantity: 1, unit: 'cup' } }
+      ],
+      steps: ['Mix ingredients', 'Bake for 30 minutes'],
+      cookingTimeMinutes: 45,
+      servings: 8
+    });
     repository.setRecipes([recipe]);
 
     renderComponent('1');
 
     expect(screen.getByText('Chocolate Cake')).toBeTruthy();
-    expect(screen.getByText('Recipe details for Chocolate Cake will be displayed here.')).toBeTruthy();
-  });
-
-  it('should display recipe with default name when not specified', () => {
-    const recipe = buildTestRecipe({ id: 'test-123' });
-    repository.setRecipes([recipe]);
-
-    renderComponent('test-123');
-
-    expect(screen.getByText('Test Recipe test-123')).toBeTruthy();
-    expect(screen.getByText('Recipe details for Test Recipe test-123 will be displayed here.')).toBeTruthy();
+    expect(screen.getByText('A rich chocolate cake')).toBeTruthy();
+    expect(screen.getByText('2 cups flour')).toBeTruthy();
+    expect(screen.getByText('1 cup sugar')).toBeTruthy();
+    expect(screen.getByText('Mix ingredients')).toBeTruthy();
+    expect(screen.getByText('Bake for 30 minutes')).toBeTruthy();
+    expect(screen.getByText('45 minutes')).toBeTruthy();
+    expect(screen.getByText('8')).toBeTruthy();
   });
 
   it('should handle multiple recipes and display the correct one', () => {
     const recipes = [
-      buildTestRecipe({ id: '1', name: 'Apple Pie' }),
+      buildTestRecipe({ id: '1' }),
       buildTestRecipe({ id: '2', name: 'Banana Bread' }),
-      buildTestRecipe({ id: '3', name: 'Carrot Cake' }),
+      buildTestRecipe({ id: '3' }),
     ];
     repository.setRecipes(recipes);
 
     renderComponent('2');
 
     expect(screen.getByText('Banana Bread')).toBeTruthy();
-    expect(screen.queryByText('Apple Pie')).toBeFalsy();
-    expect(screen.queryByText('Carrot Cake')).toBeFalsy();
+  });
+
+  it('should display ingredients without portions', () => {
+    const recipe = buildTestRecipe({ 
+      id: '1', 
+      name: 'No Portion Recipe',
+      ingredients: [
+        { name: 'salt' },
+        { name: 'pepper' }
+      ]
+    });
+    repository.setRecipes([recipe]);
+
+    renderComponent('1');
+
+    expect(screen.getByText('salt')).toBeTruthy();
+    expect(screen.getByText('pepper')).toBeTruthy();
   });
 });

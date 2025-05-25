@@ -1,1 +1,1 @@
-export type { Recipe } from './recipe';
+export * from './recipe';
