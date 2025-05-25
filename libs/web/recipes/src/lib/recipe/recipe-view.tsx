@@ -1,5 +1,6 @@
 import { Recipe, formatRecipeIngredient } from '../models';
-import { Main, Card, PageHeading, SectionHeading } from '@recipe-browser/shared-ui';
+import { Main, Card, PageHeading, CardTitle } from '@recipe-browser/shared-ui';
+import { ReactNode } from 'react';
 
 interface RecipeViewProps {
   recipe: Recipe;
@@ -14,7 +15,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
         {/* Description */}
         {recipe.description && (
           <Card className="md:col-span-2">
-            <SectionHeading>Description</SectionHeading>
+            <CustomCardTitle>Description</CustomCardTitle>
             <p className="text-neutral-secondary">{recipe.description}</p>
           </Card>
         )}
@@ -22,7 +23,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
         {/* Recipe Info */}
         {(recipe.cookingTimeMinutes || recipe.servings) && (
           <Card>
-            <SectionHeading>Recipe Info</SectionHeading>
+            <CustomCardTitle>Recipe Info</CustomCardTitle>
             <div className="space-y-2">
               {recipe.cookingTimeMinutes && (
                 <div className="flex justify-between">
@@ -43,7 +44,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
         {/* Ingredients */}
         {recipe.ingredients && recipe.ingredients.length > 0 && (
           <Card>
-            <SectionHeading>Ingredients</SectionHeading>
+            <CustomCardTitle>Ingredients</CustomCardTitle>
             <ul className="space-y-2">
               {recipe.ingredients.map((ingredient, index) => (
                 <li key={index} className="text-neutral-secondary flex items-center">
@@ -58,7 +59,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
         {/* Steps */}
         {recipe.steps && recipe.steps.length > 0 && (
           <Card className="md:col-span-2">
-            <SectionHeading>Cooking Instructions</SectionHeading>
+            <CustomCardTitle>Cooking Instructions</CustomCardTitle>
             <ol className="space-y-3">
               {recipe.steps.map((step, index) => (
                 <li key={index} className="text-neutral-secondary flex">
@@ -74,4 +75,10 @@ export function RecipeView({ recipe }: RecipeViewProps) {
       </div>
     </Main>
   );
+}
+
+function CustomCardTitle({ children }: { children: ReactNode }) {
+  return (
+    <CardTitle className="mb-2">{children}</CardTitle>
+  )
 }

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Recipe } from '../models';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
-import { Main, Card, PageHeading, SmallText } from '@recipe-browser/shared-ui';
+import { Main, Card, CardTitle, PageHeading, SmallText } from '@recipe-browser/shared-ui';
 
 interface RecipesListProps {
   recipes: Recipe[];
@@ -16,9 +16,9 @@ export function RecipesListView(props: RecipesListProps) {
         {props.recipes.map((recipe) => (
           <Link key={recipe.id} to={`${RECIPES_ROUTE}/${recipe.id}`}>
             <Card className="cursor-pointer hover:bg-neutral-primary-hover transition-shadow duration-200">
-              <h3 className="text-lg font-semibold text-neutral-primary mb-2">
+              <CardTitle className="mb-2">
                 {recipe.name}
-              </h3>
+              </CardTitle>
               <SmallText>Click to view recipe</SmallText>
             </Card>
           </Link>

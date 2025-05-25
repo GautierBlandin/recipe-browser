@@ -21,7 +21,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ children, className }: SectionHeadingProps) {
   return (
-    <h2 className={cn('text-xl font-semibold text-neutral-primary mb-3', className)}>
+    <h2 className={cn('text-xl font-semibold text-neutral-primary', className)}>
       {children}
     </h2>
   );

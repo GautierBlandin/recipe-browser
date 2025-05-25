@@ -13,3 +13,16 @@ export function Card({ children, className }: CardProps) {
     </div>
   );
 }
+
+interface CardTitleProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function CardTitle({ children, className }: CardTitleProps) {
+  return (
+    <h3 className={cn('text-lg font-semibold text-neutral-primary', className)}>
+      {children}
+    </h3>
+  );
+}
