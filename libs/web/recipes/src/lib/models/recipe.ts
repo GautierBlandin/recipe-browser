@@ -13,7 +13,7 @@ export interface RecipeIngredient {
   portion?: Portion;
 }
 
-export function formatIngredient(ingredient: RecipeIngredient): string {
+export function formatRecipeIngredient(ingredient: RecipeIngredient): string {
   if (!ingredient.portion) {
     return ingredient.name;
   }

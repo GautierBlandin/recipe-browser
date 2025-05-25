@@ -1,4 +1,4 @@
-import { Recipe, formatIngredient } from '../models';
+import { Recipe, formatRecipeIngredient } from '../models';
 
 interface RecipeViewProps {
   recipe: Recipe;
@@ -8,7 +8,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">{recipe.name}</h1>
-      
+
       <div className="grid gap-6 md:grid-cols-2">
         {/* Description */}
         {recipe.description && (
@@ -47,7 +47,7 @@ export function RecipeView({ recipe }: RecipeViewProps) {
               {recipe.ingredients.map((ingredient, index) => (
                 <li key={index} className="text-gray-700 flex items-center">
                   <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 flex-shrink-0"></span>
-                  {formatIngredient(ingredient)}
+                  {formatRecipeIngredient(ingredient)}
                 </li>
               ))}
             </ul>
