@@ -6,17 +6,17 @@ import { RecipesRepository } from '../ports';
 import { TestContainer } from '../test-infrastructure';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
 
-describe('RecipesListContainer Integration', () => {
+describe('RecipesList Integration', () => {
   let repository: RecipesRepository;
 
   beforeEach(() => {
     repository = new RecipesRepository();
   });
 
-  const renderIntegrationTest = (initialRoute: string = RECIPES_ROUTE) => {
+  const renderIntegrationTest = () => {
     // Set the hash before rendering
-    window.location.hash = `#${initialRoute}`;
-    
+    window.location.hash = RECIPES_ROUTE;
+
     return render(
       <TestContainer recipesRepository={repository}>
         <Routes>
@@ -50,10 +50,10 @@ describe('RecipesListContainer Integration', () => {
 
     // Verify navigation occurred and recipe name is displayed on detail page
     expect(screen.getByText('Integration Test Recipe')).toBeTruthy();
-    
+
     // Verify we're no longer on the recipes list page
     expect(screen.queryByText('My Recipe Collection')).toBeFalsy();
-    
+
     // Verify the URL changed to the recipe detail page
     expect(window.location.hash).toMatch(new RegExp(`#${RECIPES_ROUTE}/rcp_`));
   });
