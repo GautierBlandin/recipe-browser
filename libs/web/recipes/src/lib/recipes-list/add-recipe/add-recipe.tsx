@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Card } from '@recipe-browser/shared-ui';
+import { Card, Button } from '@recipe-browser/shared-ui';
 
 interface AddRecipeProps {
   onCreateRecipe: (name: string) => void;
@@ -34,13 +34,12 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
   return (
     <>
       {!showForm && (
-        <button
+        <Button
           onClick={() => setShowForm(true)}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition-colors"
           data-testid="add-recipe-button"
         >
           Add Recipe
-        </button>
+        </Button>
       )}
 
       {showForm && (
@@ -67,21 +66,21 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
               )}
             </div>
             <div className="flex gap-2">
-              <button
+              <Button
                 type="submit"
-                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md font-medium transition-colors"
+                variant="success"
                 data-testid="submit-recipe-button"
               >
                 Create Recipe
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
+                variant="neutral"
                 onClick={handleCancel}
-                className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md font-medium transition-colors"
                 data-testid="cancel-button"
               >
                 Cancel
-              </button>
+              </Button>
             </div>
           </form>
         </Card>

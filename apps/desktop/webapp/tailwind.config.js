@@ -3,7 +3,10 @@ const { join } = require('path');
 const colors = require("tailwindcss/colors");
 
 const globalColors = {
+  brand: colors.blue,
   neutral: colors.slate,
+  error: colors.red,
+  success: colors.green,
 };
 
 /** @type {import('tailwindcss').Config} */
@@ -22,6 +25,12 @@ module.exports = {
         "neutral-primary-hover": globalColors.neutral[50],
         "neutral-secondary": globalColors.neutral[100],
         "neutral-secondary-hover": globalColors.neutral[200],
+        "brand-primary": globalColors.brand[600],
+        "brand-primary-hover": globalColors.brand[700],
+        "success-primary": globalColors.success[600],
+        "success-primary-hover": globalColors.success[700],
+        "error-primary": globalColors.error[600],
+        "error-primary-hover": globalColors.error[700],
       },
       borderColor: {
         "neutral-primary": globalColors.neutral[200],
@@ -31,6 +40,9 @@ module.exports = {
         "neutral-secondary": globalColors.neutral[700],
         "neutral-tertiary": globalColors.neutral[600],
         "neutral-muted": globalColors.neutral[500],
+        "brand-onprimary": colors.white,
+        "success-onprimary": colors.white,
+        "error-onprimary": colors.white,
       },
     },
   },
