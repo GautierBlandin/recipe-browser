@@ -48,18 +48,36 @@ Test repository behavior:
 - [x] Update in-memory repository implementation to generate unique IDs and store new recipes. The IDs should use the object id pattern (e.g rcp_unique-id)
 
 ### 2. Add Creation UI to Recipes List
-- [ ] Add "Add Recipe" button to recipes list component
-- [ ] Implement simple form (input field + submit button) for capturing recipe name
-- [ ] Add form validation to ensure name is provided and not empty
-- [ ] Handle form submission to call repository and navigate to new recipe
+- [x] Add "Add Recipe" button to recipes list component
+- [x] Implement simple form (input field + submit button) for capturing recipe name
+- [x] Add form validation to ensure name is provided and not empty
+- [x] Handle form submission to call repository and navigate to new recipe
 
 ### 3. Update Navigation Integration
-- [ ] Ensure navigation from recipes list to new recipe works correctly
-- [ ] Verify return navigation shows the new recipe in the list
-- [ ] Test the complete flow: Create → View → Back to List
+- [x] Ensure navigation from recipes list to new recipe works correctly
+- [x] Verify return navigation shows the new recipe in the list
+- [x] Test the complete flow: Create → View → Back to List
 
 ### 4. Update Tests
-- [ ] Add tests for new repository method
-- [ ] Add tests for recipes list creation UI and form behavior
-- [ ] Add integration tests for the complete creation flow
-- [ ] Verify edge cases like duplicate names and empty inputs
+- [x] Add tests for new repository method
+- [x] Add tests for recipes list creation UI and form behavior
+- [x] Add integration tests for the complete creation flow
+- [x] Verify edge cases like duplicate names and empty inputs
+
+### 5. Debug and refactor
+- [x] Fix issue where, after successful recipe creation, the recipe is still mark as not found in the recipe view.
+  1. Create RecipesInfrastructureContext - React context that holds the repository instance
+  2. Create RecipesInfrastructureProvider - Provider component that creates repository and provides it through context
+  3. Create useRecipesInfrastructure hook - Custom hook to access the infrastructure context
+  4. Export from library - Make the context and provider available to consuming apps
+  5. Update test-infrastructure - Enhance existing test container to provide mock infrastructure context
+  6. Update RecipesList container - Remove prop dependency, use hook to get repository from context
+  7. Update Recipe container - Remove prop dependency, use hook to get repository from context
+  8. Remove repository props - Clean up prop interfaces since containers will get repo from context
+  9. Update all tests - Modify existing tests to work with new context-based approach
+  10. Integration test - Verify the fix resolves the "Recipe not found" issue
+
+- [x] Extract button component
+- [x] Create shared modal component and use it for the recipe creation form
+- [ ] Use aria-label rather than data-testId everywhere possible
+- [ ] Find if there are things that should be replaced by the shared Button that are left
