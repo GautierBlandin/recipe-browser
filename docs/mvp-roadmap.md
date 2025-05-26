@@ -25,10 +25,11 @@
 - [x] Update RecipeView to display all recipe fields in a structured layout
 
 ### Phase 3: Recipe Creation
-- [ ] Add an Add Recipe button to recipes list page.
-- [ ] When creating a recipe, the only thing that should be provided is the name.
-- [ ] Navigate to newly created recipe after creation
-- [ ] Check that when doing the flow Create Recipe --> Navigate to Recipe --> Navigate back to Recipes List, the new recipe is displayed
+- [x] Add an Add Recipe button to recipes list page.
+- [x] When creating a recipe, the only thing that should be provided is the name.
+- [x] Navigate to newly created recipe after creation
+- [x] Check that when doing the flow Create Recipe --> Navigate to Recipe --> Navigate back to Recipes List, the new recipe is displayed
+- [ ] Clean up and refactor
 
 ### Phase 4: Recipe Editing
 - [ ] Add "Edit Recipe" button to recipe view
@@ -51,3 +52,4 @@
 - [ ] Ensure navigation works from all states
 - [ ] Verify data persistence across app restarts
 - [ ] Basic error handling for edge cases
+- [ ] Use the app and clean the UI where relevant
