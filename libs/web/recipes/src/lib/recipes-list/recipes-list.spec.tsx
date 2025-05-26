@@ -14,8 +14,8 @@ describe('RecipesContainer', () => {
 
     const renderComponent = () => {
       return render(
-        <TestContainer>
-          <RecipesListContainer recipesRepository={repository} />
+        <TestContainer recipesRepository={repository}>
+          <RecipesListContainer />
         </TestContainer>
       );
     };

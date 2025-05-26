@@ -1,15 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { RecipesListView } from './recipes-list.view';
-import { RecipesRepository } from '../ports';
 import { NavbarLayout } from '../navigation';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
+import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 
-interface RecipesContainerProps {
-  recipesRepository: RecipesRepository;
-}
-
-export function RecipesListContainer({ recipesRepository }: RecipesContainerProps) {
+export function RecipesListContainer() {
   const navigate = useNavigate();
+  const { recipesRepository } = useRecipesInfrastructure();
   const recipes = recipesRepository.getAllRecipes();
 
   const handleCreateRecipe = (name: string) => {
@@ -20,12 +17,10 @@ export function RecipesListContainer({ recipesRepository }: RecipesContainerProp
   return <RecipesListView recipes={recipes} onCreateRecipe={handleCreateRecipe} />;
 }
 
-const recipesRepository = new RecipesRepository();
-
 export function RecipesList() {
   return (
     <NavbarLayout>
-      <RecipesListContainer recipesRepository={recipesRepository} />
+      <RecipesListContainer />
     </NavbarLayout>
   );
 }

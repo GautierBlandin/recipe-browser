@@ -13,8 +13,8 @@ describe('RecipeContainer', () => {
 
   const renderComponent = (recipeId?: string) => {
     return render(
-      <TestContainer>
-        <RecipeContainer recipesRepository={repository} id={recipeId} />
+      <TestContainer recipesRepository={repository}>
+        <RecipeContainer id={recipeId} />
       </TestContainer>
     );
   };

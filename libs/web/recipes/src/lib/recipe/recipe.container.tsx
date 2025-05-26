@@ -1,12 +1,13 @@
-import { RecipesRepository } from '../ports';
 import { RecipeView } from './recipe.view';
+import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 
 interface RecipeContainerProps {
-  recipesRepository: RecipesRepository;
   id?: string;
 }
 
-export function RecipeContainer({ recipesRepository, id }: RecipeContainerProps) {
+export function RecipeContainer({ id }: RecipeContainerProps) {
+  const { recipesRepository } = useRecipesInfrastructure();
+  
   if (!id) {
     return <div className="max-w-4xl mx-auto p-6">Recipe ID not provided</div>;
   }
