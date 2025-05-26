@@ -100,7 +100,7 @@ describe('RecipesContainer', () => {
     expect(screen.getByText('Add Recipe')).toBeTruthy();
   });
 
-  it('should show recipe creation form when Add Recipe button is clicked', () => {
+  it('should show modal with form when Add Recipe button is clicked', () => {
     repository.setRecipes([]);
 
     renderComponent();
@@ -108,20 +108,10 @@ describe('RecipesContainer', () => {
     const addButton = screen.getByTestId('add-recipe-button');
     fireEvent.click(addButton);
 
+    expect(screen.getByTestId('add-recipe-button')).toBeTruthy();
     expect(screen.getByTestId('recipe-name-input')).toBeTruthy();
     expect(screen.getByTestId('submit-recipe-button')).toBeTruthy();
     expect(screen.getByTestId('cancel-button')).toBeTruthy();
-});
-
-  it('should hide Add Recipe button when form is shown', () => {
-    repository.setRecipes([]);
-
-    renderComponent();
-
-    const addButton = screen.getByTestId('add-recipe-button');
-    fireEvent.click(addButton);
-
-    expect(screen.queryByTestId('add-recipe-button')).toBeFalsy();
   });
 
   it('should create recipe and navigate when form is submitted with valid name', () => {
