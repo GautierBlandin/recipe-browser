@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { Main } from '@recipe-browser/shared-ui';
+import { Main, Button } from '@recipe-browser/shared-ui';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
 
 function Navigation() {
@@ -9,12 +9,12 @@ function Navigation() {
       <div className="flex items-center">
         <h1 className="text-xl font-semibold text-neutral-primary mr-6">Recipe Browser</h1>
         <Link to={RECIPES_ROUTE}>
-          <button
-            className="px-4 py-2 text-sm font-medium text-neutral-secondary bg-neutral-secondary hover:bg-neutral-secondary-hover rounded-md transition-colors"
+          <Button
+            variant="neutral"
             aria-label="Navigate to recipes list"
           >
             View Recipes
-          </button>
+          </Button>
         </Link>
       </div>
     </nav>
