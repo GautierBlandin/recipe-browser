@@ -36,17 +36,17 @@ describe('RecipesList Integration', () => {
 
     // Verify we're on the recipes list page
     expect(screen.getByText('My Recipe Collection')).toBeTruthy();
-    expect(screen.getByTestId('add-recipe-button')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Add new recipe' })).toBeTruthy();
 
     // Open the create form
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
 
     // Fill in recipe name
-    const nameInput = screen.getByTestId('recipe-name-input');
+    const nameInput = screen.getByRole('textbox', { name: 'Recipe name' });
     fireEvent.change(nameInput, { target: { value: 'Integration Test Recipe' } });
 
     // Submit the form
-    fireEvent.click(screen.getByTestId('submit-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Create recipe' }));
 
     // Verify navigation occurred and recipe name is displayed on detail page
     expect(screen.getByText('Integration Test Recipe')).toBeTruthy();

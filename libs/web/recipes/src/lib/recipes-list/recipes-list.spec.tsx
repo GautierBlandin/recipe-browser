@@ -96,7 +96,7 @@ describe('RecipesContainer', () => {
 
     renderComponent();
 
-    expect(screen.getByTestId('add-recipe-button')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Add new recipe' })).toBeTruthy();
     expect(screen.getByText('Add Recipe')).toBeTruthy();
   });
 
@@ -105,13 +105,13 @@ describe('RecipesContainer', () => {
 
     renderComponent();
 
-    const addButton = screen.getByTestId('add-recipe-button');
+    const addButton = screen.getByRole('button', { name: 'Add new recipe' });
     fireEvent.click(addButton);
 
-    expect(screen.getByTestId('add-recipe-button')).toBeTruthy();
-    expect(screen.getByTestId('recipe-name-input')).toBeTruthy();
-    expect(screen.getByTestId('submit-recipe-button')).toBeTruthy();
-    expect(screen.getByTestId('cancel-button')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Add new recipe' })).toBeTruthy();
+    expect(screen.getByRole('textbox', { name: 'Recipe name' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Create recipe' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Cancel recipe creation' })).toBeTruthy();
   });
 
   it('should create recipe and navigate when form is submitted with valid name', () => {
@@ -120,14 +120,14 @@ describe('RecipesContainer', () => {
     renderComponent();
 
     // Open form
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
 
     // Fill in recipe name
-    const nameInput = screen.getByTestId('recipe-name-input');
+    const nameInput = screen.getByRole('textbox', { name: 'Recipe name' });
     fireEvent.change(nameInput, { target: { value: 'New Test Recipe' } });
 
     // Submit form
-    fireEvent.click(screen.getByTestId('submit-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Create recipe' }));
 
     // Verify recipe was created
     const createdRecipes = repository.getAllRecipes();
@@ -144,13 +144,13 @@ describe('RecipesContainer', () => {
     renderComponent();
 
     // Open form
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
 
     // Submit form without entering name
-    fireEvent.click(screen.getByTestId('submit-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Create recipe' }));
 
     // Verify error is shown
-    expect(screen.getByTestId('error-message')).toBeTruthy();
+    expect(screen.getByRole('alert')).toBeTruthy();
     expect(screen.getByText('Recipe name is required')).toBeTruthy();
 
     // Verify no recipe was created
@@ -163,17 +163,17 @@ describe('RecipesContainer', () => {
     renderComponent();
 
     // Open form
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
 
     // Fill in whitespace-only name
-    const nameInput = screen.getByTestId('recipe-name-input');
+    const nameInput = screen.getByRole('textbox', { name: 'Recipe name' });
     fireEvent.change(nameInput, { target: { value: '   ' } });
 
     // Submit form
-    fireEvent.click(screen.getByTestId('submit-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Create recipe' }));
 
     // Verify error is shown
-    expect(screen.getByTestId('error-message')).toBeTruthy();
+    expect(screen.getByRole('alert')).toBeTruthy();
     expect(screen.getByText('Recipe name is required')).toBeTruthy();
 
     // Verify no recipe was created
@@ -186,16 +186,16 @@ describe('RecipesContainer', () => {
     renderComponent();
 
     // Open form and enter some text
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
-    const nameInput = screen.getByTestId('recipe-name-input');
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
+    const nameInput = screen.getByRole('textbox', { name: 'Recipe name' });
     fireEvent.change(nameInput, { target: { value: 'Some Recipe' } });
 
     // Click cancel
-    fireEvent.click(screen.getByTestId('cancel-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel recipe creation' }));
 
     // Verify form is hidden and Add Recipe button is back
-    expect(screen.queryByTestId('recipe-name-input')).toBeFalsy();
-    expect(screen.getByTestId('add-recipe-button')).toBeTruthy();
+    expect(screen.queryByRole('textbox', { name: 'Recipe name' })).toBeFalsy();
+    expect(screen.getByRole('button', { name: 'Add new recipe' })).toBeTruthy();
 
     // Verify no recipe was created
     expect(repository.getAllRecipes()).toHaveLength(0);
@@ -207,18 +207,18 @@ describe('RecipesContainer', () => {
     const { unmount } = renderComponent();
 
     // Create first recipe
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
-    const nameInput = screen.getByTestId('recipe-name-input');
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
+    const nameInput = screen.getByRole('textbox', { name: 'Recipe name' });
     fireEvent.change(nameInput, { target: { value: 'First Recipe' } });
-    fireEvent.click(screen.getByTestId('submit-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Create recipe' }));
 
     // Unmount the component and render again to simulate navigation back
     unmount();
     renderComponent();
-    fireEvent.click(screen.getByTestId('add-recipe-button'));
+    fireEvent.click(screen.getByRole('button', { name: 'Add new recipe' }));
 
     // Verify form is clean
-    const newNameInput = screen.getByTestId('recipe-name-input') as HTMLInputElement;
+    const newNameInput = screen.getByRole('textbox', { name: 'Recipe name' }) as HTMLInputElement;
     expect(newNameInput.value).toBe('');
   });
 });
