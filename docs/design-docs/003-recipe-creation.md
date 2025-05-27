@@ -79,5 +79,5 @@ Test repository behavior:
 
 - [x] Extract button component
 - [x] Create shared modal component and use it for the recipe creation form
-- [ ] Use aria-label rather than data-testId everywhere possible
-- [ ] Find if there are things that should be replaced by the shared Button that are left
+- [x] Use aria-label rather than data-testId everywhere possible
+- [x] Find if there are things that should be replaced by the shared Button that are left
