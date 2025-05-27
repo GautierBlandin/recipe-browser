@@ -10,7 +10,7 @@ export function RecipeDescriptionView({ description }: RecipeDescriptionViewProp
   }
 
   return (
-    <Card className="md:col-span-2">
+    <Card className="md:col-span-2" aria-label="Recipe description section">
       <CardTitle className="mb-2">Description</CardTitle>
       <p className="text-neutral-secondary">{description}</p>
     </Card>

@@ -11,12 +11,12 @@ export function RecipeIngredientsView({ ingredients }: RecipeIngredientsViewProp
   }
 
   return (
-    <Card>
+    <Card aria-label="Recipe ingredients section">
       <CardTitle className="mb-2">Ingredients</CardTitle>
       <ul className="space-y-2">
         {ingredients.map((ingredient, index) => (
           <li key={index} className="text-neutral-secondary flex items-center">
-            <span className="w-2 h-2 bg-neutral-tertiary rounded-full mr-3 flex-shrink-0"></span>
+            <span className="w-2 h-2 bg-neutral-tertiary rounded-full mr-3 flex-shrink-0" aria-hidden="true"></span>
             {formatRecipeIngredient(ingredient)}
           </li>
         ))}

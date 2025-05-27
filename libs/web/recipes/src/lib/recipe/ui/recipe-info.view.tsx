@@ -11,7 +11,7 @@ export function RecipeInfoView({ cookingTimeMinutes, servings }: RecipeInfoViewP
   }
 
   return (
-    <Card>
+    <Card aria-label="Recipe information section">
       <CardTitle className="mb-2">Recipe Info</CardTitle>
       <div className="space-y-2">
         {cookingTimeMinutes && (

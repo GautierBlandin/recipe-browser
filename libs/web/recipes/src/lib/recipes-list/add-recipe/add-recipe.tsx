@@ -35,12 +35,12 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
     <>
       <Button
         onClick={() => setShowForm(true)}
-        data-testid="add-recipe-button"
+        aria-label="Add new recipe"
       >
         Add Recipe
       </Button>
 
-      <Modal isOpen={showForm} onClose={handleCancel} title="Add New Recipe">
+      <Modal isOpen={showForm} onClose={handleCancel} title="Add New Recipe" ariaLabel="Add new recipe dialog">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="recipe-name" className="block text-sm font-medium text-neutral-secondary mb-1">
@@ -54,10 +54,11 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
               className="w-full px-3 py-2 border border-neutral-primary rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary"
               placeholder="Enter recipe name..."
               autoFocus
-              data-testid="recipe-name-input"
+              aria-label="Recipe name"
+              aria-describedby={error ? "recipe-name-error" : undefined}
             />
             {error && (
-              <p className="mt-1 text-sm text-error-primary" data-testid="error-message">
+              <p id="recipe-name-error" className="mt-1 text-sm text-error-primary" role="alert">
                 {error}
               </p>
             )}
@@ -66,7 +67,7 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
             <Button
               type="submit"
               variant="success"
-              data-testid="submit-recipe-button"
+              aria-label="Create recipe"
             >
               Create Recipe
             </Button>
@@ -74,7 +75,7 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
               type="button"
               variant="neutral"
               onClick={handleCancel}
-              data-testid="cancel-button"
+              aria-label="Cancel recipe creation"
             >
               Cancel
             </Button>

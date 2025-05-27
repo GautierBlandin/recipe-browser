@@ -11,6 +11,7 @@ function Navigation() {
         <Link to={RECIPES_ROUTE}>
           <button
             className="px-4 py-2 text-sm font-medium text-neutral-secondary bg-neutral-secondary hover:bg-neutral-secondary-hover rounded-md transition-colors"
+            aria-label="Navigate to recipes list"
           >
             View Recipes
           </button>

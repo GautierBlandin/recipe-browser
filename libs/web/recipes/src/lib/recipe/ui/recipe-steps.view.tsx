@@ -10,12 +10,15 @@ export function RecipeStepsView({ steps }: RecipeStepsViewProps) {
   }
 
   return (
-    <Card className="md:col-span-2">
+    <Card className="md:col-span-2" aria-label="Cooking instructions section">
       <CardTitle className="mb-2">Cooking Instructions</CardTitle>
       <ol className="space-y-3">
         {steps.map((step, index) => (
           <li key={index} className="text-neutral-secondary flex">
-            <span className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium mr-3 flex-shrink-0 mt-0.5">
+            <span 
+              className="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium mr-3 flex-shrink-0 mt-0.5"
+              aria-label={`Step ${index + 1}`}
+            >
               {index + 1}
             </span>
             <span>{step}</span>
