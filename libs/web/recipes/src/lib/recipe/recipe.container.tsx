@@ -1,20 +1,16 @@
 import { useState } from 'react';
 import { RecipeView } from './recipe.view';
 import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
+import { RecipeEditFormData } from './recipe-edit-form';
 
 interface RecipeContainerProps {
-  id?: string;
+  id: string;
 }
 
 export function RecipeContainer({ id }: RecipeContainerProps) {
   const { recipesRepository } = useRecipesInfrastructure();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  
-  if (!id) {
-    return <div className="max-w-4xl mx-auto p-6">Recipe ID not provided</div>;
-  }
-
-  const recipe = recipesRepository.getRecipe(id);
+  const [recipe, setRecipe] = useState(() => recipesRepository.getRecipe(id));
 
   if (!recipe) {
     return <div className="max-w-4xl mx-auto p-6">Recipe not found</div>;
@@ -28,12 +24,21 @@ export function RecipeContainer({ id }: RecipeContainerProps) {
     setIsEditModalOpen(false);
   };
 
+  const handleSaveRecipe = (data: RecipeEditFormData) => {
+    const updatedRecipe = recipesRepository.updateRecipe(id, data);
+    if (updatedRecipe) {
+      setRecipe(updatedRecipe);
+    }
+    setIsEditModalOpen(false);
+  };
+
   return (
-    <RecipeView 
-      recipe={recipe} 
+    <RecipeView
+      recipe={recipe}
       onEditRecipeClicked={handleEditRecipeClicked}
       isEditModalOpen={isEditModalOpen}
       onCloseEditModal={handleCloseModal}
+      onSaveRecipe={handleSaveRecipe}
     />
   );
 }

@@ -1,18 +1,20 @@
 import { Recipe } from '../models';
-import { PageHeading, Button, Modal } from '@recipe-browser/shared-ui';
+import { Button, Modal, PageHeading } from '@recipe-browser/shared-ui';
 import { RecipeDescriptionView } from './ui/recipe-description.view';
 import { RecipeInfoView } from './ui/recipe-info.view';
 import { RecipeIngredientsView } from './ui/recipe-ingredients.view';
 import { RecipeStepsView } from './ui/recipe-steps.view';
+import { RecipeEditForm, RecipeEditFormData } from './recipe-edit-form';
 
 interface RecipeViewProps {
   recipe: Recipe;
   onEditRecipeClicked: () => void;
   isEditModalOpen: boolean;
   onCloseEditModal: () => void;
+  onSaveRecipe: (data: RecipeEditFormData) => void;
 }
 
-export function RecipeView({ recipe, onEditRecipeClicked, isEditModalOpen, onCloseEditModal }: RecipeViewProps) {
+export function RecipeView({ recipe, onEditRecipeClicked, isEditModalOpen, onCloseEditModal, onSaveRecipe }: RecipeViewProps) {
   return (
     <>
       <div className="flex justify-between items-center mb-8">
@@ -36,7 +38,11 @@ export function RecipeView({ recipe, onEditRecipeClicked, isEditModalOpen, onClo
         title="Edit Recipe"
         ariaLabel="Edit Recipe"
       >
-        <div>Edit form placeholder</div>
+        <RecipeEditForm
+          recipe={recipe}
+          onSave={onSaveRecipe}
+          onCancel={onCloseEditModal}
+        />
       </Modal>
     </>
   );

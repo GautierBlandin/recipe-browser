@@ -125,22 +125,19 @@ interface EditFormData {
 ## Steps
 
 ### 1. Extend Repository Interface
-- [ ] Add `updateRecipe(id: string, updates: Partial<Recipe>): Recipe | undefined` to interface
-- [ ] Implement in RecipesRepository class with proper ID validation and partial updates
-- [ ] Add comprehensive tests for update functionality
+- [x] Add `updateRecipe(id: string, updates: Partial<Recipe>): Recipe | undefined` to interface
+- [x] Implement in RecipesRepository class with proper ID validation and partial updates
+- [x] Add comprehensive tests for update functionality
 
-### 2. Create Edit Modal Component
+### 2. Integrate Edit Functionality
+- [ ] Add "Edit Recipe" button to recipe view with proper styling
+
+### 3. Create Edit Modal Component
 - [ ] Design RecipeEditModal with form for all recipe fields
 - [ ] Implement dynamic ingredient list editing (add/remove/reorder)
 - [ ] Implement dynamic steps list editing (add/remove/reorder)
 - [ ] Add form validation with proper error handling
 - [ ] Add save/cancel actions with loading states
-
-### 3. Integrate Edit Functionality
-- [ ] Add "Edit Recipe" button to recipe view with proper styling
-- [ ] Connect edit modal to recipe container
-- [ ] Implement form submission to call repository update
-- [ ] Handle success/error states and user feedback
 
 ### 4. Update Recipe View Integration
 - [ ] Ensure recipe view refreshes after successful edit
