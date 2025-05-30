@@ -17,7 +17,7 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_ENV=development npx electron ./dist",
+        "command": "NODE_ENV=development npx electron ./dist --no-sandbox",
         "cwd": "{projectRoot}"
       },
       "dependsOn": ["build"]
