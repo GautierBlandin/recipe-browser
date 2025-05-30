@@ -138,6 +138,16 @@ export class RecipesRepository {
     return newRecipe;
   }
 
+  updateRecipe(id: string, updates: Partial<Recipe>): Recipe | undefined {
+    const existingRecipe = this.recipes.find(recipe => recipe.id === id);
+    if (!existingRecipe) return undefined;
+    
+    const updatedRecipe = { ...existingRecipe, ...updates };
+    const index = this.recipes.findIndex(recipe => recipe.id === id);
+    this.recipes[index] = updatedRecipe;
+    return updatedRecipe;
+  }
+
   private generateUniqueId(): string {
     const timestamp = Date.now().toString(36);
     const randomPart = Math.random().toString(36).substring(2, 8);
