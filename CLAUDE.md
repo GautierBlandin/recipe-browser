@@ -1,3 +1,7 @@
+# General guidelines
+
+- Use TDD when you write code, meaning write a **single** failing test, and then write the code to make it pass.
+
 @ai-context/project.md
 
 @ai-context/testing-guidelines.md
