@@ -80,4 +80,15 @@ describe('RecipeContainer', () => {
     expect(screen.getByText('salt')).toBeTruthy();
     expect(screen.getByText('pepper')).toBeTruthy();
   });
+
+  it('should display edit recipe button', () => {
+    const recipe = buildTestRecipe({
+      id: '1',
+    });
+    repository.setRecipes([recipe]);
+
+    renderComponent('1');
+
+    expect(screen.getByRole('button', { name: 'Edit Recipe' })).toBeTruthy();
+  });
 });
