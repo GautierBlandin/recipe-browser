@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { RecipeView } from './recipe.view';
 import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 
@@ -7,6 +8,7 @@ interface RecipeContainerProps {
 
 export function RecipeContainer({ id }: RecipeContainerProps) {
   const { recipesRepository } = useRecipesInfrastructure();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   
   if (!id) {
     return <div className="max-w-4xl mx-auto p-6">Recipe ID not provided</div>;
@@ -18,5 +20,20 @@ export function RecipeContainer({ id }: RecipeContainerProps) {
     return <div className="max-w-4xl mx-auto p-6">Recipe not found</div>;
   }
 
-  return <RecipeView recipe={recipe} />;
+  const handleEditRecipeClicked = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsEditModalOpen(false);
+  };
+
+  return (
+    <RecipeView 
+      recipe={recipe} 
+      onEditRecipeClicked={handleEditRecipeClicked}
+      isEditModalOpen={isEditModalOpen}
+      onCloseEditModal={handleCloseModal}
+    />
+  );
 }

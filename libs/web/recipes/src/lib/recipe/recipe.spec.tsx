@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { buildTestRecipe } from '../models/recipe.sample';
 import { RecipeContainer } from './recipe.container';
 import { RecipesRepository } from '../ports';
@@ -90,5 +90,20 @@ describe('RecipeContainer', () => {
     renderComponent('1');
 
     expect(screen.getByRole('button', { name: 'Edit Recipe' })).toBeTruthy();
+  });
+
+  it('should open edit modal when edit button is clicked', () => {
+    const recipe = buildTestRecipe({
+      id: '1',
+      name: 'Test Recipe'
+    });
+    repository.setRecipes([recipe]);
+
+    renderComponent('1');
+
+    const editButton = screen.getByRole('button', { name: 'Edit Recipe' });
+    fireEvent.click(editButton);
+
+    expect(screen.getByRole('dialog', { name: 'Edit Recipe' })).toBeTruthy();
   });
 });
