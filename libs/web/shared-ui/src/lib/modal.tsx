@@ -6,10 +6,30 @@ interface ModalProps {
   children: ReactNode;
   title?: string;
   ariaLabel?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
 }
 
-export function Modal({ isOpen, onClose, children, title, ariaLabel }: ModalProps) {
+function getModalSizeClass(size: 'sm' | 'md' | 'lg' | 'xl' | 'full' = 'md'): string {
+  switch (size) {
+    case 'sm':
+      return 'max-w-sm';
+    case 'md':
+      return 'max-w-md';
+    case 'lg':
+      return 'max-w-4xl';
+    case 'xl':
+      return 'max-w-6xl';
+    case 'full':
+      return 'max-w-[95vw] max-h-[95vh] overflow-auto';
+    default:
+      return 'max-w-md';
+  }
+}
+
+export function Modal({ isOpen, onClose, children, title, ariaLabel, size = 'md' }: ModalProps) {
   if (!isOpen) return null;
+
+  const sizeClass = getModalSizeClass(size);
 
   return (
     <div 
@@ -18,7 +38,7 @@ export function Modal({ isOpen, onClose, children, title, ariaLabel }: ModalProp
       aria-label="Modal backdrop"
     >
       <div 
-        className="bg-neutral-primary rounded-lg shadow-lg w-full max-w-md mx-4 p-6"
+        className={`bg-neutral-primary rounded-lg shadow-lg w-full ${sizeClass} mx-4 p-6`}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

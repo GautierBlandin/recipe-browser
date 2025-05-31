@@ -37,6 +37,7 @@ export function RecipeView({ recipe, onEditRecipeClicked, isEditModalOpen, onClo
         onClose={onCloseEditModal}
         title="Edit Recipe"
         ariaLabel="Edit Recipe"
+        size="full"
       >
         <RecipeEditForm
           recipe={recipe}
