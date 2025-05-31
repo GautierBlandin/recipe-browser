@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { RecipeIngredient, formatRecipeIngredient } from '../models';
 import { Button } from '@recipe-browser/shared-ui';
 import { useRecipeStore } from './store/recipe-store';
+import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 
 export interface RecipeEditFormData {
   name: string;
@@ -13,8 +14,8 @@ export interface RecipeEditFormData {
 }
 
 interface RecipeEditFormProps {
-  onSave: (data: RecipeEditFormData) => void;
   onCancel: () => void;
+  onSuccess?: () => void;
 }
 
 function formatIngredientsAsText(ingredients?: RecipeIngredient[]): string {
@@ -27,8 +28,27 @@ function formatStepsAsText(steps?: string[]): string {
   return steps.join('\n');
 }
 
-export function RecipeEditForm({ onSave, onCancel }: RecipeEditFormProps) {
+function parseIngredientsFromText(ingredientsText?: string): RecipeIngredient[] {
+  if (!ingredientsText || ingredientsText.trim() === '') return [];
+  return ingredientsText
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .map(line => ({ name: line }));
+}
+
+function parseStepsFromText(stepsText?: string): string[] {
+  if (!stepsText || stepsText.trim() === '') return [];
+  return stepsText
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0);
+}
+
+export function RecipeEditForm({ onCancel, onSuccess }: RecipeEditFormProps) {
   const recipe = useRecipeStore((state) => state.recipe);
+  const setRecipe = useRecipeStore((state) => state.setRecipe);
+  const { recipesRepository } = useRecipesInfrastructure();
 
   const {
     register,
@@ -46,7 +66,20 @@ export function RecipeEditForm({ onSave, onCancel }: RecipeEditFormProps) {
   });
 
   const onSubmit = (data: RecipeEditFormData) => {
-    onSave(data);
+    const updateData = {
+      name: data.name,
+      description: data.description,
+      ingredients: data.ingredients ? parseIngredientsFromText(data.ingredients) : undefined,
+      steps: data.steps ? parseStepsFromText(data.steps) : undefined,
+      cookingTimeMinutes: data.cookingTimeMinutes,
+      servings: data.servings
+    };
+
+    const updatedRecipe = recipesRepository.updateRecipe(recipe.id, updateData);
+    if (updatedRecipe) {
+      setRecipe(updatedRecipe);
+      onSuccess?.();
+    }
   };
 
   return (
