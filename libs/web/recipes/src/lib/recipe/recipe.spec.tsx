@@ -11,7 +11,7 @@ describe('RecipeContainer', () => {
     repository = new RecipesRepository();
   });
 
-  const renderComponent = (recipeId?: string) => {
+  const renderComponent = (recipeId: string) => {
     return render(
       <TestContainer recipesRepository={repository}>
         <RecipeContainer id={recipeId} />
