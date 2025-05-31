@@ -3,8 +3,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node16",
+    "moduleResolution": "node16",
     "esModuleInterop": true,
     "target": "es2022",
     "lib": ["es2022", "dom"],
@@ -12,8 +12,8 @@
     "rootDir": "src",
     "sourceMap": true,
     "skipLibCheck": true,
-    "emitDeclarationOnly": false,
-    "declaration": false
+    "emitDeclarationOnly": true,
+    "declaration": true
   },
   "exclude": [
     "out-tsc",
