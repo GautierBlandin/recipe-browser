@@ -1,20 +1,21 @@
-import { Recipe } from '../models';
 import { Button, Modal, PageHeading } from '@recipe-browser/shared-ui';
 import { RecipeDescriptionView } from './ui/recipe-description.view';
 import { RecipeInfoView } from './ui/recipe-info.view';
 import { RecipeIngredientsView } from './ui/recipe-ingredients.view';
 import { RecipeStepsView } from './ui/recipe-steps.view';
 import { RecipeEditForm, RecipeEditFormData } from './recipe-edit-form';
+import { useRecipeStore } from './store/recipe-store';
 
 interface RecipeViewProps {
-  recipe: Recipe;
   onEditRecipeClicked: () => void;
   isEditModalOpen: boolean;
   onCloseEditModal: () => void;
   onSaveRecipe: (data: RecipeEditFormData) => void;
 }
 
-export function RecipeView({ recipe, onEditRecipeClicked, isEditModalOpen, onCloseEditModal, onSaveRecipe }: RecipeViewProps) {
+export function RecipeView({ onEditRecipeClicked, isEditModalOpen, onCloseEditModal, onSaveRecipe }: RecipeViewProps) {
+  const recipe = useRecipeStore((state) => state.recipe);
+
   return (
     <>
       <div className="flex justify-between items-center mb-8">
@@ -40,7 +41,6 @@ export function RecipeView({ recipe, onEditRecipeClicked, isEditModalOpen, onClo
         size="full"
       >
         <RecipeEditForm
-          recipe={recipe}
           onSave={onSaveRecipe}
           onCancel={onCloseEditModal}
         />

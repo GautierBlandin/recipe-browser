@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { Recipe, RecipeIngredient, formatRecipeIngredient } from '../models';
+import { RecipeIngredient, formatRecipeIngredient } from '../models';
 import { Button } from '@recipe-browser/shared-ui';
+import { useRecipeStore } from './store/recipe-store';
 
 export interface RecipeEditFormData {
   name: string;
@@ -12,7 +13,6 @@ export interface RecipeEditFormData {
 }
 
 interface RecipeEditFormProps {
-  recipe: Recipe;
   onSave: (data: RecipeEditFormData) => void;
   onCancel: () => void;
 }
@@ -27,7 +27,9 @@ function formatStepsAsText(steps?: string[]): string {
   return steps.join('\n');
 }
 
-export function RecipeEditForm({ recipe, onSave, onCancel }: RecipeEditFormProps) {
+export function RecipeEditForm({ onSave, onCancel }: RecipeEditFormProps) {
+  const recipe = useRecipeStore((state) => state.recipe);
+
   const {
     register,
     handleSubmit,
