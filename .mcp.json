@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "jetbrains": {
+      "command": "npx",
+      "args": ["-y", "@jetbrains/mcp-proxy"]
+    }
+  }
+}
