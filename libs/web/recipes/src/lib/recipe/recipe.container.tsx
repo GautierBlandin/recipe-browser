@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { RecipeView } from './recipe.view';
 import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 import { RecipeEditFormData } from './recipe-edit-form';
@@ -11,16 +10,7 @@ interface RecipeContainerProps {
 
 function RecipeContainerContent({ id }: { id: string }) {
   const { recipesRepository } = useRecipesInfrastructure();
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const setRecipe = useRecipeStore((state) => state.setRecipe);
-
-  const handleEditRecipeClicked = () => {
-    setIsEditModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsEditModalOpen(false);
-  };
 
   const parseIngredientsFromText = (ingredientsText?: string): RecipeIngredient[] => {
     if (!ingredientsText || ingredientsText.trim() === '') return [];
@@ -53,14 +43,10 @@ function RecipeContainerContent({ id }: { id: string }) {
     if (updatedRecipe) {
       setRecipe(updatedRecipe);
     }
-    setIsEditModalOpen(false);
   };
 
   return (
     <RecipeView
-      onEditRecipeClicked={handleEditRecipeClicked}
-      isEditModalOpen={isEditModalOpen}
-      onCloseEditModal={handleCloseModal}
       onSaveRecipe={handleSaveRecipe}
     />
   );
