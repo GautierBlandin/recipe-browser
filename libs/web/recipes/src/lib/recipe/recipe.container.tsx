@@ -3,6 +3,7 @@ import { RecipeView } from './recipe.view';
 import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 import { RecipeEditFormData } from './recipe-edit-form';
 import { RecipeIngredient } from '../models';
+import { RecipeStoreProvider } from './store/recipe-store';
 
 interface RecipeContainerProps {
   id: string;
@@ -51,7 +52,7 @@ export function RecipeContainer({ id }: RecipeContainerProps) {
       cookingTimeMinutes: data.cookingTimeMinutes,
       servings: data.servings
     };
-    
+
     const updatedRecipe = recipesRepository.updateRecipe(id, updateData);
     if (updatedRecipe) {
       setRecipe(updatedRecipe);
@@ -60,12 +61,14 @@ export function RecipeContainer({ id }: RecipeContainerProps) {
   };
 
   return (
-    <RecipeView
-      recipe={recipe}
-      onEditRecipeClicked={handleEditRecipeClicked}
-      isEditModalOpen={isEditModalOpen}
-      onCloseEditModal={handleCloseModal}
-      onSaveRecipe={handleSaveRecipe}
-    />
+    <RecipeStoreProvider initialRecipe={recipe}>
+      <RecipeView
+        recipe={recipe}
+        onEditRecipeClicked={handleEditRecipeClicked}
+        isEditModalOpen={isEditModalOpen}
+        onCloseEditModal={handleCloseModal}
+        onSaveRecipe={handleSaveRecipe}
+      />
+    </RecipeStoreProvider>
   );
 }
