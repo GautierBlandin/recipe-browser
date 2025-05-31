@@ -13,12 +13,12 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const name = recipeName.trim();
-    
+
     if (!name) {
       setError('Recipe name is required');
       return;
     }
-    
+
     setError('');
     onCreateRecipe(name);
     setRecipeName('');
@@ -40,7 +40,7 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
         Add Recipe
       </Button>
 
-      <Modal isOpen={showForm} onClose={handleCancel} title="Add New Recipe" ariaLabel="Add new recipe dialog">
+      <Modal isOpen={showForm} onClose={handleCancel} title="Add New Recipe">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="recipe-name" className="block text-sm font-medium text-neutral-secondary mb-1">

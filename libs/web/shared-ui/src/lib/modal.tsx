@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import { cn } from './utils';
 
 interface ModalProps {
   isOpen: boolean;
@@ -27,30 +29,34 @@ function getModalSizeClass(size: 'sm' | 'md' | 'lg' | 'xl' | 'full' = 'md'): str
 }
 
 export function Modal({ isOpen, onClose, children, title, ariaLabel, size = 'md' }: ModalProps) {
-  if (!isOpen) return null;
-
   const sizeClass = getModalSizeClass(size);
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      onClick={onClose}
-      aria-label="Modal backdrop"
-    >
-      <div 
-        className={`bg-neutral-primary rounded-lg shadow-lg w-full ${sizeClass} mx-4 p-6`}
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-label={ariaLabel || "Modal dialog"}
-      >
-        {title && (
-          <div className="mb-4">
-            <h2 className="text-lg font-semibold text-neutral-primary">{title}</h2>
-          </div>
-        )}
-        {children}
-      </div>
-    </div>
+    <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <Dialog.Portal>
+        <Dialog.Overlay
+          className="fixed inset-0 z-50 bg-black bg-opacity-50"
+          aria-label="Modal backdrop"
+        />
+        <Dialog.Content
+          className={cn(
+            "fixed left-[50%] top-[50%] z-50 translate-x-[-50%] translate-y-[-50%]",
+            "bg-neutral-primary rounded-lg shadow-lg w-full mx-4 p-6",
+            sizeClass
+          )}
+          aria-label={ariaLabel || "Modal dialog"}
+          aria-describedby={undefined}
+        >
+          {title && (
+            <div className="mb-4">
+              <Dialog.Title className="text-lg font-semibold text-neutral-primary">
+                {title}
+              </Dialog.Title>
+            </div>
+          )}
+          {children}
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

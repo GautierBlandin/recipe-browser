@@ -108,7 +108,7 @@ describe('RecipesContainer', () => {
     const addButton = screen.getByRole('button', { name: 'Add new recipe' });
     fireEvent.click(addButton);
 
-    expect(screen.getByRole('button', { name: 'Add new recipe' })).toBeTruthy();
+    expect(screen.getByRole('dialog', { name: 'Add New Recipe' })).toBeTruthy();
     expect(screen.getByRole('textbox', { name: 'Recipe name' })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Create recipe' })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Cancel recipe creation' })).toBeTruthy();
