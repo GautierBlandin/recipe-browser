@@ -8,7 +8,7 @@ export function useEditRecipeForm() {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
-  const OpenModalButton = () => (
+  const OpenEditModalButton = () => (
     <Button variant="neutral" onClick={handleOpen}>
       Edit Recipe
     </Button>
@@ -30,7 +30,7 @@ export function useEditRecipeForm() {
   );
 
   return {
-    OpenModalButton,
+    OpenEditModalButton,
     EditModal,
     isOpen,
     open: handleOpen,

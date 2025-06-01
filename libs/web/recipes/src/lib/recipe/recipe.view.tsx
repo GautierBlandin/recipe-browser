@@ -8,13 +8,13 @@ import { useEditRecipeForm } from './use-edit-recipe-form';
 
 export function RecipeView() {
   const recipe = useRecipeStore((state) => state.recipe);
-  const { OpenModalButton, EditModal } = useEditRecipeForm();
+  const { OpenEditModalButton, EditModal } = useEditRecipeForm();
 
   return (
     <>
       <div className="flex justify-between items-center mb-8">
         <PageHeading>{recipe.name}</PageHeading>
-        <OpenModalButton />
+        <OpenEditModalButton />
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
