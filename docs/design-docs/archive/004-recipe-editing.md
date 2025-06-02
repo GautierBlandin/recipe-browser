@@ -130,7 +130,7 @@ interface EditFormData {
 - [x] Add comprehensive tests for update functionality
 
 ### 2. Integrate Edit Functionality
-- [ ] Add "Edit Recipe" button to recipe view with proper styling
+- [x] Add "Edit Recipe" button to recipe view with proper styling
 
 ### 3. Create Edit Modal Component
 - [ ] Design RecipeEditModal with form for all recipe fields
