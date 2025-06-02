@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { RecipeContainer } from '../recipe.container';
+import { Recipe } from '../recipe';
 import { TestContainer } from '../../test-infrastructure';
 import { buildTestRecipe } from '../../models/recipe.sample';
 import { Routes } from 'react-router-dom';
@@ -19,7 +19,7 @@ describe('Recipe deletion', () => {
   const renderRecipe = (id: string) => {
     return render(
       <TestContainer recipesRepository={repository}>
-        <RecipeContainer id={id} />
+        <Recipe id={id} />
       </TestContainer>
     );
   };

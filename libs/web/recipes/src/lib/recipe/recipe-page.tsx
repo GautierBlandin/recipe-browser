@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { RecipeContainer } from './recipe.container';
+import { Recipe } from './recipe';
 import { NavbarLayout } from '../navigation';
 
 export function RecipePage() {
@@ -11,7 +11,7 @@ export function RecipePage() {
 
   return (
     <NavbarLayout>
-      <RecipeContainer id={id} />
+      <Recipe id={id} />
     </NavbarLayout>
   );
 }

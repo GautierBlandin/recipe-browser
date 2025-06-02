@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { buildTestRecipe } from '../../models/recipe.sample';
-import { RecipeContainer } from '../recipe.container';
+import { Recipe } from '../recipe';
 import { RecipesRepository } from '../../ports';
 import { TestContainer } from '../../test-infrastructure';
 
@@ -14,7 +14,7 @@ describe('Recipe Edit Modal', () => {
   const renderWithModalOpen = (recipeId: string) => {
     render(
       <TestContainer recipesRepository={repository}>
-        <RecipeContainer id={recipeId} />
+        <Recipe id={recipeId} />
       </TestContainer>
     );
 

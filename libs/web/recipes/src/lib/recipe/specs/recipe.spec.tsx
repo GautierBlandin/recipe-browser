@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { buildTestRecipe } from '../../models/recipe.sample';
-import { RecipeContainer } from '../recipe.container';
+import { Recipe } from '../recipe';
 import { RecipesRepository } from '../../ports';
 import { TestContainer } from '../../test-infrastructure';
 
@@ -14,7 +14,7 @@ describe('RecipeContainer', () => {
   const renderComponent = (recipeId: string) => {
     return render(
       <TestContainer recipesRepository={repository}>
-        <RecipeContainer id={recipeId} />
+        <Recipe id={recipeId} />
       </TestContainer>
     );
   };
