@@ -32,9 +32,9 @@
 - [ ] Clean up and refactor
 
 ### Phase 4: Recipe Editing
-- [ ] Add "Edit Recipe" button to recipe view
-- [ ] Design recipe edition
-- [ ] Show updated content immediately after editing
+- [x] Add "Edit Recipe" button to recipe view
+- [x] Design recipe edition
+- [x] Show updated content immediately after editing
 
 ### Phase 5: Recipe Deletion
 - [ ] Add "Delete Recipe" button to recipe view
