@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { RecipeContainer } from './recipe.container';
-import { TestContainer } from '../test-infrastructure';
-import { buildTestRecipe } from '../models/recipe.sample';
+import { RecipeContainer } from '../recipe.container';
+import { TestContainer } from '../../test-infrastructure';
+import { buildTestRecipe } from '../../models/recipe.sample';
 import { Routes } from 'react-router-dom';
-import { recipesRoute } from '../recipes-route';
-import { RecipesRepository } from '../ports';
-import { RECIPES_ROUTE } from '../recipes-route.constants';
+import { recipesRoute } from '../../recipes-route';
+import { RecipesRepository } from '../../ports';
+import { RECIPES_ROUTE } from '../../recipes-route.constants';
 
 describe('Recipe deletion', () => {
   let repository: RecipesRepository;
@@ -107,13 +107,13 @@ describe('Recipe deletion integration', () => {
     expect(screen.getByText('Banana Bread')).toBeTruthy();
 
     await user.click(screen.getByText('Chocolate Cake'));
-    
+
     await waitFor(() => {
       expect(window.location.hash).toBe(`#${RECIPES_ROUTE}/1`);
     });
 
     expect(screen.getByRole('button', { name: 'Delete Recipe' })).toBeTruthy();
-    
+
     await user.click(screen.getByRole('button', { name: 'Delete Recipe' }));
     await user.click(screen.getByRole('button', { name: 'Delete' }));
 

@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { buildTestRecipe } from '../models/recipe.sample';
-import { RecipeContainer } from './recipe.container';
-import { RecipesRepository } from '../ports';
-import { TestContainer } from '../test-infrastructure';
+import { buildTestRecipe } from '../../models/recipe.sample';
+import { RecipeContainer } from '../recipe.container';
+import { RecipesRepository } from '../../ports';
+import { TestContainer } from '../../test-infrastructure';
 
 describe('RecipeContainer', () => {
   let repository: RecipesRepository;

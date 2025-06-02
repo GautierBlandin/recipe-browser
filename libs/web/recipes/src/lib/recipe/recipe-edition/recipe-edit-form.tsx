@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
-import { RecipeIngredient, formatRecipeIngredient } from '../models';
+import { RecipeIngredient, formatRecipeIngredient } from '../../models';
 import { Button } from '@recipe-browser/shared-ui';
-import { useRecipeStore } from './store/recipe-store';
-import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
+import { useRecipeStore } from '../store/recipe-store';
+import { useRecipesInfrastructure } from '../../infrastructure/recipes-infrastructure.context';
 
 export interface RecipeEditFormData {
   name: string;

@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Routes, Route } from 'react-router-dom';
 import { RecipesList } from './recipes-list';
-import { Recipe } from '../recipe/recipe';
+import { RecipePage } from '../recipe/recipe-page';
 import { RecipesRepository } from '../ports';
 import { TestContainer } from '../test-infrastructure';
 import { RECIPES_ROUTE } from '../recipes-route.constants';
@@ -21,7 +21,7 @@ describe('RecipesList Integration', () => {
       <TestContainer recipesRepository={repository}>
         <Routes>
           <Route path={RECIPES_ROUTE} element={<RecipesList />} />
-          <Route path={`${RECIPES_ROUTE}/:id`} element={<Recipe />} />
+          <Route path={`${RECIPES_ROUTE}/:id`} element={<RecipePage />} />
         </Routes>
       </TestContainer>
     );

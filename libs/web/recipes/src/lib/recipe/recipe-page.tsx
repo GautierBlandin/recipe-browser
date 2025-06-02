@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { RecipeContainer } from './recipe.container';
 import { NavbarLayout } from '../navigation';
 
-export function Recipe() {
+export function RecipePage() {
   const { id } = useParams<{ id: string }>();
 
   if (!id) {

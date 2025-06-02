@@ -1,7 +1,7 @@
 import { Button, Modal, useModal } from '@recipe-browser/shared-ui';
-import { useRecipeStore } from './store/recipe-store';
+import { useRecipeStore } from '../store/recipe-store';
 import { useNavigate } from 'react-router-dom';
-import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
+import { useRecipesInfrastructure } from '../../infrastructure/recipes-infrastructure.context';
 
 export function DeleteRecipeDialog() {
   const deleteModal = useModal();

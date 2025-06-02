@@ -4,8 +4,8 @@ import { RecipeInfoView } from './ui/recipe-info.view';
 import { RecipeIngredientsView } from './ui/recipe-ingredients.view';
 import { RecipeStepsView } from './ui/recipe-steps.view';
 import { useRecipeStore } from './store/recipe-store';
-import { EditRecipeDialog } from './edit-recipe-dialog';
-import { DeleteRecipeDialog } from './delete-recipe-dialog';
+import { EditRecipeDialog } from './recipe-edition/edit-recipe-dialog';
+import { DeleteRecipeDialog } from './recipe-deletion/delete-recipe-dialog';
 
 export function RecipeView() {
   const recipe = useRecipeStore((state) => state.recipe);
