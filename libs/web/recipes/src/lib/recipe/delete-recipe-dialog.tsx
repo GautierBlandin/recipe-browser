@@ -1,16 +1,16 @@
 import { Button, Modal, useModal } from '@recipe-browser/shared-ui';
 import { useRecipeStore } from './store/recipe-store';
-import { useRecipesRepository } from '../infrastructure/recipes-infrastructure.context';
 import { useNavigate } from 'react-router-dom';
+import { useRecipesInfrastructure } from '../infrastructure/recipes-infrastructure.context';
 
 export function DeleteRecipeDialog() {
   const deleteModal = useModal();
   const recipe = useRecipeStore((state) => state.recipe);
-  const repository = useRecipesRepository();
+  const { recipesRepository } = useRecipesInfrastructure();
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    const result = repository.deleteRecipe(recipe.id);
+    const result = recipesRepository.deleteRecipe(recipe.id);
     if (result.deleted) {
       navigate('/recipes');
     }
@@ -21,7 +21,7 @@ export function DeleteRecipeDialog() {
       <Button variant="error" onClick={deleteModal.open}>
         Delete Recipe
       </Button>
-      
+
       <Modal
         isOpen={deleteModal.isOpen}
         onClose={deleteModal.close}
@@ -33,7 +33,7 @@ export function DeleteRecipeDialog() {
           <p className="text-neutral-primary">
             Are you sure you want to delete "{recipe.name}"? This action cannot be undone.
           </p>
-          
+
           <div className="flex justify-end space-x-2">
             <Button variant="neutral" onClick={deleteModal.close}>
               Cancel
