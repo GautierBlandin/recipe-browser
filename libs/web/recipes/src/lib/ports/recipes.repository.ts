@@ -148,6 +148,16 @@ export class RecipesRepository {
     return updatedRecipe;
   }
 
+  deleteRecipe(id: string): { deleted: boolean } {
+    const index = this.recipes.findIndex(recipe => recipe.id === id);
+    if (index === -1) {
+      return { deleted: false };
+    }
+    
+    this.recipes.splice(index, 1);
+    return { deleted: true };
+  }
+
   private generateUniqueId(): string {
     const timestamp = Date.now().toString(36);
     const randomPart = Math.random().toString(36).substring(2, 8);

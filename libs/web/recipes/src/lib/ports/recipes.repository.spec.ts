@@ -101,4 +101,40 @@ describe('RecipesRepository', () => {
       });
     });
   });
+
+  describe('deleteRecipe', () => {
+    it('should delete recipe when it exists', () => {
+      const testRecipe = buildTestRecipe({ id: 'delete-test-1', name: 'Recipe to Delete' });
+      repository.setRecipes([testRecipe]);
+
+      const result = repository.deleteRecipe('delete-test-1');
+
+      expect(result).toEqual({ deleted: true });
+      expect(repository.getRecipe('delete-test-1')).toBeUndefined();
+      expect(repository.getAllRecipes()).toHaveLength(0);
+    });
+
+    it('should return deleted false when recipe does not exist', () => {
+      repository.setRecipes([]);
+
+      const result = repository.deleteRecipe('non-existent-id');
+
+      expect(result).toEqual({ deleted: false });
+    });
+
+    it('should only delete the specified recipe', () => {
+      const recipe1 = buildTestRecipe({ id: 'keep-1', name: 'Keep Recipe 1' });
+      const recipe2 = buildTestRecipe({ id: 'delete-2', name: 'Delete Recipe' });
+      const recipe3 = buildTestRecipe({ id: 'keep-3', name: 'Keep Recipe 3' });
+      repository.setRecipes([recipe1, recipe2, recipe3]);
+
+      const result = repository.deleteRecipe('delete-2');
+
+      expect(result).toEqual({ deleted: true });
+      expect(repository.getAllRecipes()).toHaveLength(2);
+      expect(repository.getRecipe('keep-1')).toBeDefined();
+      expect(repository.getRecipe('delete-2')).toBeUndefined();
+      expect(repository.getRecipe('keep-3')).toBeDefined();
+    });
+  });
 });

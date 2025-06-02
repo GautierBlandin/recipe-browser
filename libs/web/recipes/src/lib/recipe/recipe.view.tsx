@@ -5,6 +5,7 @@ import { RecipeIngredientsView } from './ui/recipe-ingredients.view';
 import { RecipeStepsView } from './ui/recipe-steps.view';
 import { useRecipeStore } from './store/recipe-store';
 import { EditRecipeDialog } from './edit-recipe-dialog';
+import { DeleteRecipeDialog } from './delete-recipe-dialog';
 
 export function RecipeView() {
   const recipe = useRecipeStore((state) => state.recipe);
@@ -13,7 +14,10 @@ export function RecipeView() {
     <>
       <div className="flex justify-between items-center mb-8">
         <PageHeading>{recipe.name}</PageHeading>
-        <EditRecipeDialog />
+        <div className="flex gap-2">
+          <EditRecipeDialog />
+          <DeleteRecipeDialog />
+        </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
