@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 
 function createWindow(): void {
@@ -63,4 +63,9 @@ app.whenReady().then(() => {
 // Quit when all windows are closed, except on macOS
 app.on('window-all-closed', function () {
   app.quit();
+});
+
+// IPC handlers
+ipcMain.on('recipe:add-clicked', () => {
+  console.log('Add recipe button clicked in renderer process');
 });

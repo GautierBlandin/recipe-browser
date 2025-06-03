@@ -1,3 +1,5 @@
+import { contextBridge, ipcRenderer } from 'electron';
+
 // Preload script runs in isolated context
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector: string, text: string): void => {
@@ -10,9 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Expose any APIs to the renderer process here
-// Example:
-// import { contextBridge, ipcRenderer } from 'electron';
-// contextBridge.exposeInMainWorld('electronAPI', {
-//   someFunction: () => ipcRenderer.invoke('some-channel')
-// });
+// Expose recipe API to the renderer process
+contextBridge.exposeInMainWorld('recipeAPI', {
+  onAddRecipeClick: () => ipcRenderer.send('recipe:add-clicked')
+});

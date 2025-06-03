@@ -31,10 +31,15 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
     setError('');
   };
 
+  const handleAddRecipeClick = () => {
+    window.recipeAPI.onAddRecipeClick();
+    setShowForm(true);
+  };
+
   return (
     <>
       <Button
-        onClick={() => setShowForm(true)}
+        onClick={handleAddRecipeClick}
         aria-label="Add new recipe"
       >
         Add Recipe
