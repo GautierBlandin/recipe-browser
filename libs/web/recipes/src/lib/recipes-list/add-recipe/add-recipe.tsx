@@ -32,7 +32,7 @@ export function AddRecipe({ onCreateRecipe }: AddRecipeProps) {
   };
 
   const handleAddRecipeClick = () => {
-    window.recipeAPI.onAddRecipeClick();
+    if(window.recipeAPI) window.recipeAPI.onAddRecipeClick();
     setShowForm(true);
   };
 
