@@ -44,8 +44,12 @@
 - [x] Make sure the recipe is removed from the list
 
 ### Phase 6: Local Persistence
-- [ ] Define and implement a storage solution that leverages electron (probably some sort of file storage). Make sure the solution is compatible with a webapp (file API ?)
-- [ ] Replace in memory repository with persistent storage repository
+- [x] Define a storage solution that leverages electron.
+- [ ] Clicking on the add recipe button triggers a console.log on the main process.
+- [ ] The recipes are hardcoded in the main process rather than in the in-memory repository
+- [ ] It is possible to add / edit / delete recipes using an in-memory repository **running in the main process**
+- [ ] The recipes are hard-coded in the sqlite data database rather than in the in-memory repository of the main process
+- [ ] It is possible to add / edit / delete recipes through the sqlite data database running in the main process
 
 ### Phase 7: Final Polish
 - [ ] Verify data persistence across app restarts
