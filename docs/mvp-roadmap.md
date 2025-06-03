@@ -37,19 +37,16 @@
 - [x] Show updated content immediately after editing
 
 ### Phase 5: Recipe Deletion
-- [ ] Add "Delete Recipe" button to recipe view
-- [ ] Add confirmation dialog for deletion
-- [ ] Implement recipe deletion functionality
-- [ ] Navigate back to recipes list after deletion
-- [ ] Make sure the recipe is removed from the list
+- [x] Add "Delete Recipe" button to recipe view
+- [x] Add confirmation dialog for deletion
+- [x] Implement recipe deletion functionality
+- [x] Navigate back to recipes list after deletion
+- [x] Make sure the recipe is removed from the list
 
 ### Phase 6: Local Persistence
-- [ ] Define and implement a storage solution that leverages electron (probably some sort of file storage). Make sure the solution is compatible with a webapp (file API)
+- [ ] Define and implement a storage solution that leverages electron (probably some sort of file storage). Make sure the solution is compatible with a webapp (file API ?)
 - [ ] Replace in memory repository with persistent storage repository
 
 ### Phase 7: Final Polish
-- [ ] Test all CRUD operations work correctly
-- [ ] Ensure navigation works from all states
 - [ ] Verify data persistence across app restarts
-- [ ] Basic error handling for edge cases
 - [ ] Use the app and clean the UI where relevant
